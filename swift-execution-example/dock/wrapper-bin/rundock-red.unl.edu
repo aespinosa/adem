@@ -1,0 +1,125 @@
+#! /bin/bash
+PATH=/bin:/usr/bin:$PATH
+
+#
+# rundock runid ligfile outfile targetlist
+#    targetlist can be "all"
+#
+
+if [ $# -lt 2 ]; then
+  echo usage: $0 ligands-file target-list
+  exit 0
+fi
+
+# Get dock parameters from command line
+
+ligpath=$1
+targets=$2
+
+time=`which time` # to get [/fuse]/usr/bin/time, not time builtin
+tmp=`/bin/pwd`
+userdir=/tmp
+dock=$userdir/dock
+dockpack=/opt/osg/data/houzx/dockKAGxNL.tar.gz
+# Dock app version
+dock6app=/opt/osg/app/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
+loadfile()
+{
+    DIR_RAM="$1"
+    ARCHIVE="$2"
+
+        mkdir $DIR_RAM
+        cd $DIR_RAM
+        tar zxf $ARCHIVE
+	
+	EXIT_CODE=$? 
+	
+	if [ "${EXIT_CODE}" -ne "0" ]; then
+	    echo "Error in untar of ${ARCHIVE} to ${DIR_RAM}/... exit code ${EXIT_CODE}"
+	    exit ${EXIT_CODE}
+	fi
+
+}
+
+subval()  # insert parameter values into the parameter template file
+{
+  repl=""
+  for v in $*; do
+    echo substituting $v = ${!v}
+    val=${!v}
+    repl="$repl -e 's,@${v}@,$val,'"
+  done
+  echo Running "sed $repl <$paramtemplate >$paramfile"
+  eval sed $repl <$paramtemplate >$paramfile
+}
+
+loadfile $dock $dockpack
+cd $tmp
+cd ../../..
+temp=`/bin/pwd`
+
+ligfile=`basename $ligpath`
+lig=$temp/shared/$ligpath
+
+work=`mktemp -d $userdir/dock.XXXXXX`
+cd $work
+#dd if=$lig of=$ligfile bs=131072
+INPUT_LIGANDMOL2=$lig
+PARAMETER_DIR=$dock/parameters
+paramtemplate=$dock/template.in
+if [ "$targets" = all ]; then
+  targetdirs="$dock/targets/*"
+else
+  targetdirs=""
+  for t in $targets; do
+    tdir=$dock/targets/$t
+    if [ -d $tdir ]; then
+      targetdirs="$targetdirs $tdir"
+    else
+      echo $0: Warning: target directory $tdir not found - skipping
+    fi
+  done
+fi
+
+
+echo "red.unl.edu,$ligfile"
+echo $0: Docking ligands against targets $targets
+
+for RECEPTOR_DIR in $targetdirs; do
+  target=`basename $RECEPTOR_DIR`
+  paramfile=$work/dock.$target.in
+  outfile=$work/dock.$target.out
+  logfile=$work/dock.$target.log
+
+  # insert parameter values into the parameter template file
+  subval INPUT_LIGANDMOL2 RECEPTOR_DIR PARAMETER_DIR
+
+  # Run dock on target
+
+  out=dock.$target.out
+  echo DOCK starting at `date` on target $target >$out 2>&1 
+  echo
+  ls -l $paramtemplate >>$logfile 2>&1
+  ls -l $paramfile >>$logfile 2>&1
+  echo
+  $time $dock6app -i $paramfile -o $outfile >> $logfile 2>&1
+  dockrc=$?
+  echo
+  mv 1_scored.mol2 $target.scored.mol2
+  echo DOCK ended at `date` on target $target RC=$dockrc >>$logfile 2>&1 
+ls -lt
+
+done
+
+# Copy output files back to persistent location
+#rm $ligfile
+tar zcf result.tar.gz *
+/bin/mv result.tar.gz $tmp/$ligfile-result.tar.gz
+#$time dd if=result.tar.gz of=$ofile bs=128k >>dock.debug 2>&1
+#echo dd of run $runid `cat dock.debug`
+
+cd /
+rm -r $work   
+#FIXME - delete output files once copied to make space for next jobs
+
+exit 0

@@ -1,0 +1,27 @@
+# sitename  transformation  path   INSTALLED  platform  profiles
+localhost	rundock		/home/houzx/dock-run/bin/rundock	INSTALLED	INTEL32::LINUX	null
+OSG_LIGO_MIT	rundock		/opt/storage/data/osg/houzx/rundock		INSTALLED	INTEL32::LINUX	null
+UFlorida-HPC	rundock		/scratch/ufhpc/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+Nebraska	rundock		/opt/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+GLOW	rundock		/afs/hep.wisc.edu/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+SBGrid-Harvard-Exp	rundock	/se/data/vo/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+MIT_CMS	rundock	/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+CIT_CMS_T2	rundock	/raid2/osg-data/osg/houzx/rundock	INSTALLED	 INTEL32::LINUX	null
+GLOW-CMS	rundock	/afs/hep.wisc.edu/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#gk04.swt2.uta.edu	rundock	/ifs1/osg/app/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+UCSDT2	rundock	/osgfs/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+UCSDT2-B	rundock	/osgfs/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+NWICG_NotreDame	rundock	/dscratch/osg/data/osg/houzx/rundock		INSTALLED	INTEL32::LINUX	null
+NYSGRID-CCR-U2	rundock	/san/scratch/grid/grid-tmp/grid-data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#osg-nemo-ce.phys.uwm.edu	rundock	/rundock	INSTALLED	INTEL32::LINUX	null
+TTU-ANTAEUS	rundock	/mnt/hep/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+NWICG_NDCCL	rundock	/dscratch/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+AGLT2	rundock	/atlas/data08/OSG/DATA/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+UNI-OSGEDU	rundock	/data/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+cinvestav	rundock	/raid/osg_data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+SMU_PHY	rundock	/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#uscms1.fltech-grid3.fit.edu	rundock	/mnt/nas0/OSG/DATA/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+isuhep	rundock	/home/grid/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#lepton.rcac.purdue.edu	rundock	/apps/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#neuroinformatics.harvard.edu	rundock	/osg/storage/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+#rocks-fe.cise-nsf.gov	rundock	/share/apps/osg-apps/houzx/rundock	INSTALLED	INTEL32::LINUX	null
