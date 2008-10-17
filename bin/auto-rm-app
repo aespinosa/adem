@@ -1,0 +1,74 @@
+DIR="$ADEM_HOME"
+USER=`whoami`
+i=1
+
+Application=$1
+VO=$2
+SITE_FILE=$3
+if [ "$Application" == "" ]; then
+  {
+  echo "(1)Please input the Package name to be removed as the first parameter. The current Application Package name can be:"
+  echo "afni Gcc angle mpiblast blast mysql-python nab dock  octave Flex fred R freesurfer Yacc"
+  echo "(2)Please input the Virtual Organization you belong to as the second parameter. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(3)And please input the grid sites file as the third parameter.Just use a space to separate the two parameters. You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+if [ "X$VO" == "X" ]; then
+  {
+  echo "No virtual organization. Please input the Application package name to be removed as the first parameter, the virutal organization you belong to as the second parameter, and the grid sites file as the third parameter. Just use a space to separate among the parameters."
+   }
+  exit
+fi
+
+if [ "$SITE_FILE" == "" ]; then
+  {
+  echo "Oh,no grid sites file,where to remove from?Please input the Application package name to be removed as the first parameter, the virutal organization you belong to as the second parameter, and the grid sites file as the third parameter.Just use a space to separate among the parameters.You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+for SITE in $(awk '{print $1}' $SITE_FILE)
+do
+  echo $i
+  echo $SITE
+  APP=`sed -n "$i"p $SITE_FILE | awk {'print $2'}`
+  PACMAN=`sed -n "$i"p $SITE_FILE | awk {'print $3'}`
+  Signature=`sed -n "$i"p $DIR/$SITE_FILE | awk {'print $4'}|cut -d- -f1,2`
+
+  # To create the pacman remove script
+  if [  -f $DIR/tmp/$Application-rm-$SITE.sh ]; then
+     rm -f $DIR/tmp/$Application-rm-$SITE.sh
+  fi
+
+  echo "#/bin/sh" >> $DIR/tmp/$Application-rm-$SITE.sh
+  echo "cd  $APP/$VO/$USER/work-pac"  >> $DIR/tmp/$Application-rm-$SITE.sh
+  echo "source $PACMAN/setup.sh"  >> $DIR/tmp/$Application-rm-$SITE.sh
+  echo "$PACMAN/bin/pacman -clear-lock" >> $DIR/tmp/$Application-rm-$SITE.sh
+
+  case $Application in
+  afni|blast|freesurfer|octave)
+  echo "$PACMAN/bin/pacman -remove $Application-$Signature"  >> $DIR/tmp/$Application-rm-$SITE.sh
+   ;;
+   *)
+  echo "$PACMAN/bin/pacman -remove $Application"  >> $DIR/tmp/$Application-rm-$SITE.sh
+   ;;
+  esac 
+
+  #make a timestamp for log
+  echo "starting `date`" >>$DIR/tmp/$Application-rm-$SITE.log
+  echo "starting `date`" >>$DIR/tmp/$Application-rm-$SITE-err.log
+
+  # To transmit and execute the pacman remove script to the given grid site
+  #globus-job-run  $SITE  -stage $DIR/tmp/$Application-rm-$SITE.sh
+  globus-url-copy  file://$DIR/tmp/$Application-rm-$SITE.sh  gsiftp://$SITE$APP/$VO/$USER/$Application-rm-$SITE.sh && globus-job-run  $SITE  /bin/sh $APP/$VO/$USER/$Application-rm-$SITE.sh 1>>$DIR/tmp/$Application-rm-$SITE.log 2>>$DIR/tmp/$Application-rm-$SITE.log && echo "Ending `date`" >> $DIR/tmp/$Application-rm-$SITE.log &
+
+  #to delete the tempory deploy file
+  #/bin/rm -f $DIR/tmp/$Application-rm-$SITE.sh
+
+  i=`expr $i + 1` 
+done
+
+echo "Please see error messages in $DIR/tmp/$Application-rm-SITE.log"

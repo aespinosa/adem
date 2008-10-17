@@ -1,0 +1,43 @@
+#
+#
+DIR="$ADEM_HOME"
+USER=`whoami`
+
+Application=$1
+VO=$2
+SITE_FILE=$3
+if [ "X$Application" == "X" ]; then
+  {
+  echo "(1)Please input the Application name to be deployed as the first parameter."
+  echo "The Application name can be:afni angle blast dock fred freesurfer gaussian mpiblast mysql-python nab octave oops r matlab"
+  echo "(2)Please input the Virtual Organization name as the second parameter.Just use a space to separate the parameters."
+  echo "For osg, vo can be:CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(3)And please input the grid sites file as the third parameter.Just use a space to separate the parameters."
+  echo "You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+if [ "X$VO" == "X" ]; then
+  echo "(1)Please input the Virtual Organization name as the second parameter."
+  echo "For osg, vo can be:CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(2)And Please input the grid sites file as the third parameter.Just use a space to separate the parameters.You can use auto-get-sites to create the available grid sites file automatically."
+  exit
+fi
+
+if [ "X$SITE_FILE" == "X" ]; then
+  {
+  echo "Oh,no grid sites file for the application deployment.Please input the Application name to be deployed as the first parameter,Virtual Organization name as the second parameter, and the grid sites file as third parameter.Just use a space to separate the parameters.You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+echo "Application $Application is being deployed within $VO grid sites......"
+
+$DIR/$Application-deploy.sh $VO $SITE_FILE
+
+
+# Nomatter how many sites there are(3-8-20-30-50-100-?), for each site, create a deployment thread, invoke the APP_DEPLOY and run in parallel
+#$Application-deploy-p-scripts.sh $SITE_FILE
+
+#multi-shell   $DIR/tmp/R-submit-$SITE1.sh $DIR/tmp/R-submit-$SITE2.sh ... $DIR/tmp/R-submit-$SITEn.sh
