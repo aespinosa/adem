@@ -1,0 +1,85 @@
+#/bin/bash
+# To get the available grid sites
+if [ "X${ADEM_HOME}" = "X" ]; then
+    echo "You must set your ADEM_HOME variable! Then continue" 1>&2
+fi
+
+CDATE=`date +%F-%R`
+DIR="$ADEM_HOME"
+USER=`whoami`
+# get the grid computing sites
+GRID=$1
+VO=$2
+if [ "X$GRID" == "X" ]; then
+  echo "(1)Please input the GRID name as the first parameter, which can be:"
+  echo "osg osg-itb "
+  echo "(2)If necessary, please input the virtual organization name as the second parameter.Just use a space to separate the two parameters. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS"
+  exit 
+fi
+
+/usr/bin/test -d $DIR/tmp
+  if [ $? -ne 0 ];then
+  /bin/mkdir $DIR/tmp
+  #else
+  #/bin/rm -i -r $DIR/tmp/*
+  fi
+
+if [ "X$VO" != "X" ]; then
+ {
+  #If it is the first time, To make a new work directory in $APP for software deployment and a new work directory in $DATA for application execution
+  if [ ! -f $DIR/tmp/.$GRID-sitelist.txt ]; then
+  {
+   s=1
+   CACHE=$DIR/bin/.osg-sites.cache
+   for SITE in $(/bin/awk -F: '{print $1}' $CACHE)
+   do
+     APP=`sed -n "$s"p $CACHE | awk {'print $2'}`
+     DATA=`sed -n "$s"p $CACHE | awk {'print $5'}`
+     globus-job-run $SITE /bin/mkdir -p $APP/$VO/$USER/work-pac 2>/dev/null &
+     globus-job-run $SITE /bin/mkdir -p $DATA/$VO/$USER 2>/dev/null &
+   done
+  }
+  fi
+
+ /usr/bin/wget -O $DIR/tmp/.$GRID-sitelist.txt "http://vors.grid.iu.edu/cgi-bin/tindex.cgi?grid=$GRID&VO=$VO" 1>/dev/null 2>/dev/null
+ }
+fi
+
+
+ if [ "X$VO" == "X" ]; then
+  {
+  /usr/bin/wget -O $DIR/tmp/.$GRID-sitelist.txt "http://vors.grid.iu.edu/cgi-bin/tindex.cgi?grid=$GRID" 1>/dev/null 2>/dev/null 
+   }
+ fi
+ 
+/bin/cat $DIR/tmp/.$GRID-sitelist.txt |grep compute |grep PASS |awk -F, {'print $3'} > $DIR/tmp/$GRID-$VO-compute-sites.txt
+
+n=0
+for i in $(/bin/awk -F: '{print $1}' $DIR/tmp/$GRID-$VO-compute-sites.txt)
+do
+  globusrun -a -r $i/jobmanager-fork 1>/dev/null && echo $i >>  $DIR/tmp/$GRID-$VO-sites-authentication-success-$CDATE.txt & 
+  n=`expr $n + 1`
+done
+echo "It's waiting for the authentication tests results. A few seconds please!"
+n=`expr $n / 10`
+n=`expr $n + 10`
+sleep $n
+ 
+m=0 
+if [ -f  $DIR/tmp/$GRID-$VO-sites-authentication-success-$CDATE.txt ]; then
+ for SITE in $(cat $DIR/tmp/$GRID-$VO-sites-authentication-success-$CDATE.txt)
+ do
+  /bin/grep $SITE $DIR/bin/.osg-sites.cache >> $DIR/tmp/$GRID-$VO-avail-sites-$CDATE.txt &&  m=`expr $m + 1`  
+ done
+  echo "Now it's `date +%D-%R`.Altogether,there are $m successful available grid sites."
+  echo "The available sites file for the application deployment is: $DIR/tmp/$GRID-$VO-avail-sites-$CDATE.txt"
+fi
+
+#generate the swift-sites.xml
+cp $DIR/bin/.swift-sites.xml $DIR/swift-execution-example/swift-sites.xml
+sed -i "s,\$VO/\$USER,$VO/$USER,g" $DIR/swift-execution-example/swift-sites.xml
+echo "The general sites file for swift execution is: $DIR/swift-execution-example/swift-sites.xml"
+
+#invoke the sites cache and .swift-sites.xml update process
+$DIR/bin/auto-update-sites $GRID $VO $DIR/tmp/$GRID-$VO-sites-authentication-success-$CDATE.txt 2>/dev/null &

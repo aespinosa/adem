@@ -1,0 +1,21 @@
+#/bin/bash
+#To filter the sites.xml or tc.data file
+loop=0
+
+#if [ X$Pattern = X ]; then
+#   echo "Please input the grid site name as the parameter"
+#   exit
+#fi
+if [ ! -f $ADEM_HOME/swift-execution-example/swift-sites.xml ]; then
+   echo "Please use the auto-get-sites to generate the sites file automatically."
+fi
+
+SITES="/home/houzx/adem-osg/swift-execution-example/swift-sites.xml"
+
+while [ $# -ne 0 ]
+do
+  Pattern=$1
+  cat ${SITES} | sed  -n "/${Pattern}/,/\/pool/p" 2>/dev/null
+  shift
+done
+
