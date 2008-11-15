@@ -1,0 +1,10 @@
+<config>  
+  
+  <pool handle="GROW-UNI-P" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://grow.cs.uni.edu" storage="/data/osg/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="grow.cs.uni.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+    <workdirectory >/data/osg/houzx</workdirectory>
+  </pool>
+
+</config>

@@ -1,0 +1,89 @@
+<config>
+
+<!-- sites.xml specifies details of the sites that Swift can run on.
+
+The first entry entry, for localhost, should work on most linux-like systems
+without any change.
+
+It may be necessary to change the two occurences of /var/tmp to a different
+working directory.
+
+-->
+
+<!--
+  <pool handle="localhost" sysinfo="INTEL32::LINUX">
+    <gridftp  url="local://localhost" storage="/var/tmp" major="1" minor="0" patch="0" />
+    <execution provider="local" url="none" />
+    <workdirectory >/var/tmp</workdirectory>
+  </pool>
+-->
+  <pool handle="OSG_LIGO_MIT" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://osg-ligo.mit.edu" storage="/opt/storage/app/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="osg-ligo.mit.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/opt/storage/app/houzx</workdirectory>
+  </pool>
+
+  <pool handle="UFlorida-HPC" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://iogw1.hpc.ufl.edu" storage="/scratch/ufhpc/osg/data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="iogw1.hpc.ufl.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/scratch/ufhpc/osg/data/houzx</workdirectory>
+  </pool>
+
+  <pool handle="Nebraska" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://red.unl.edu" storage="/opt/osg/data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="red.unl.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+    <workdirectory >/opt/osg/data/houzx</workdirectory>
+  </pool>
+
+  <pool handle="GLOW" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://cmsgrid01.hep.wisc.edu" storage="/afs/hep.wisc.edu/osg/home/osg_edu/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="cmsgrid01.hep.wisc.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/afs/hep.wisc.edu/osg/home/osg_edu/houzx</workdirectory>
+  </pool>
+
+    <pool handle="SBGrid-Harvard-Exp" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://abitibi.sbgrid.org" storage="/se/data/vo/osg/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="abitibi.sbgrid.org/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/se/data/vo/osg/houzx</workdirectory>
+  </pool>
+  
+  <pool handle="MIT_CMS" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://ce01.cmsaf.mit.edu" storage="/osg/data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="ce01.cmsaf.mit.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/osg/data/houzx</workdirectory>
+  </pool>
+
+  <pool handle="CIT_CMS_T2" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://cit-gatekeeper.ultralight.org" storage="/raid2/osg-data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="cit-gatekeeper.ultralight.org/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/raid2/osg-data/houzx</workdirectory>
+  </pool>
+
+  <pool handle="GLOW-CMS" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://cmsgrid02.hep.wisc.edu" storage="/afs/hep.wisc.edu/osg/data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="cmsgrid02.hep.wisc.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/afs/hep.wisc.edu/osg/data/houzx</workdirectory>
+  </pool>
+  
+  <pool handle="UCSDT2-B" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://osg-gw-4.t2.ucsd.edu" storage="/osgfs/data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="osg-gw-4.t2.ucsd.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/osgfs/data/houzx</workdirectory>
+  </pool>
+
+  <pool handle="NYSGRID-CCR-U2" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://u2-grid.ccr.buffalo.edu" storage="/san/scratch/grid/grid-tmp/grid-data/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="u2-grid.ccr.buffalo.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/san/scratch/grid/grid-tmp/grid-data/houzx</workdirectory>
+  </pool>
+</config>

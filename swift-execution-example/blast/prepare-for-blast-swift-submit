@@ -1,0 +1,49 @@
+#/bin/sh
+DIR="$ADEM_HOME"
+USER=`whoami`
+i=1
+
+VO=$1
+SITE_FILE=$2
+
+if [ "X$VO" == "X" ]; then
+  {
+  echo "Please input the virtual organization name as the first parameter, and the grid sites file as the second parameter.Just use a space to separate the two parameters. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS"
+  }
+  exit
+fi
+
+if [ "$SITE_FILE" == "" ]; then
+  {
+  echo "Oh,no grid sites file for the application deployment.Please input the grid sites file as the parameter.You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+echo "#sitename transformation  path    INSTALLED       platform        profiles" > $DIR/swift-execution-example/blast/blast-tc.data
+for SITE in $(awk '{print $1}' $SITE_FILE)
+do
+  echo $i
+  echo $SITE
+  APP=`sed -n "$i"p $SITE_FILE | awk {'print $2'}`
+  #PACMAN=`sed -n "$i"p $SITE_FILE | awk {'print $3'}`
+  DATA=`sed -n "$i"p $SITE_FILE | awk {'print $5'}`
+  NAME=`sed -n "$i"p $SITE_FILE | awk {'print $7'}`
+
+#To transfer the input files for Blast application
+  globus-url-copy  file:///disks/tp-gpfs/scratch/houzx/blast-run/pir/pir-db.tar.gz  gsiftp://$SITE$DATA/$VO/$USER/pir-db.tar.gz 
+  globus-job-run $SITE /bin/tar -C $DATA/$VO/$USER -zxf $DATA/$VO/$USER/pir-db.tar.gz && globus-job-run $SITE  /bin/rm -rf $DATA/$VO/$USER/pir-db.tar.gz &
+#globus-job-run $SITE /bin/tar -C $DATA/$VO/$USER -zxf $DATA/$VO/$USER/pir-db.tar.gz && globus-job-run $SITE  /bin/rm -rf $DATA/$VO/$USER/pir-db.tar.gz &
+
+#To modify and transfer the executable wrapper script for Blast application
+  /bin/cp $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-template $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
+  sed -i "s,\$DATA/\$VO/\$USER,$DATA/$VO/$USER,g"  $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
+  sed -i "s,\$APP/osg,$APP/osg,g"  $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
+  globus-url-copy  file://$DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE gsiftp://$SITE$APP/$VO/$USER/work-pac/pirblast.sh
+  globus-job-run  $SITE /bin/chmod +x $APP/$VO/$USER/work-pac/pirblast.sh && echo "$NAME	pirblast	$APP/$VO/$USER/work-pac/pirblast.sh	INSTALLED	INTEL32::LINUX	null" >> $DIR/swift-execution-example/blast/blast-tc.data &
+ 
+  i=`expr $i + 1`
+done
+
+echo "The tc.data file for the swift execution of blast application is: $DIR/swift-execution-example/blast/blast-tc.data"

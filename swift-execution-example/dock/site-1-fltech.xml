@@ -1,0 +1,21 @@
+<config>
+<!--
+  <pool handle="FLTECH" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://uscms1.fltech-grid3.fit.edu" storage="/mnt/nas0/OSG/DATA/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="uscms1.fltech-grid3.fit.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/mnt/nas0/OSG/DATA/houzx</workdirectory>
+    <profile namespace="karajan" key="initialScore">13.134000</profile>
+    <profile namespace="karajan" key="jobThrottle">0.4</profile>
+  </pool>
+-->
+  <pool handle="UTA_SWT2" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://gk04.swt2.uta.edu" storage="/ifs1/osg/data/houzx-osg" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="gk04.swt2.uta.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+    <workdirectory >/ifs1/osg/data/houzx-osg</workdirectory>
+    <profile namespace="karajan" key="initialScore">13.134000</profile>
+    <profile namespace="karajan" key="jobThrottle">0.4</profile>
+  </pool>
+
+</config>
