@@ -1,5 +1,0 @@
-ligandsfile targetlist
-C10000.mol2 1F9Y
-C10001.mol2 1F9Y
-C10002.mol2 1F9Y
-C10003.mol2 1F9Y
