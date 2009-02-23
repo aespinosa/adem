@@ -7,8 +7,8 @@ cd $TMP
 SEQID=$1
 SEQUENCE=$2
 
-PIR=/opt/osg/data/osg/houzx/pir
-blastapp=/opt/osg/app/osg/houzx/work-pac/blast-2.2.10/bin/blastall
+PIR=/mnt/nfs03/zeng/osg_data/data/osg/houzx/pir
+blastapp=/mnt/nfs04/opt/osg/app/osg/houzx/work-pac/blast-2.2.10/bin/blastall
 
 OUTDIR=/tmp/out
 

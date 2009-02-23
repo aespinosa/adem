@@ -1,0 +1,45 @@
+#/bin/sh
+DIR="$ADEM_HOME"
+USER=`whoami`
+i=1
+
+VO=$1
+SITE_FILE=$2
+
+if [ "X$VO" == "X" ]; then
+  {
+  echo "Please input the virtual organization name as the first parameter, and the grid sites file as the second parameter.Just use a space to separate the two parameters. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS"
+  }
+  exit
+fi
+
+if [ "$SITE_FILE" == "" ]; then
+  {
+  echo "Oh,no grid sites file for the application deployment.Please input the grid sites file as the parameter.You can use auto-get-sites to create the available grid sites automatically."
+  }
+  exit
+fi
+
+echo "#check preparation for swift exection on Dock" > check-result.log
+for SITE in $(awk '{print $1}' $SITE_FILE)
+do
+  echo $i
+  echo $i >> check-result.log
+  echo $SITE >> check-result.log
+  APP=`sed -n "$i"p $SITE_FILE | awk {'print $2'}`
+  #PACMAN=`sed -n "$i"p $SITE_FILE | awk {'print $3'}`
+  DATA=`sed -n "$i"p $SITE_FILE | awk {'print $5'}`
+  NAME=`sed -n "$i"p $SITE_FILE | awk {'print $7'}`
+  echo $NAME >> check-result.log
+
+#(1) To check the input files for DOCK application
+  globus-job-run $SITE /bin/ls -al $DATA/$VO/$USER/dockKAGxNL.tar.gz >> check-result.log
+
+#(2) To check wrapper script for DOCK application
+  globus-job-run  $SITE /bin/ls -al $DATA/$VO/$USER/rundock >> check-result.log 
+ 
+  i=`expr $i + 1`
+done
+
+echo "The check result for the swift execution preparation of DOCK application is in: check-result.log"

@@ -1,0 +1,99 @@
+#/bin/bash!
+#
+DIR="$ADEM_HOME"
+USER=`whoami`
+CDATE=`date +%F-%R`
+
+Application=$1
+VO=$2
+SITE_FILE=$3
+
+#Deploy the expected application to the expected grid sites
+if [ "X$Application" == "X" ]; then
+  {
+  echo "It's checking the available applications in the repository..."
+  #get the packaged application software from the Pacman cache
+  pacman -trust-all-caches -lc $REPOSITORY_HOME > $DIR/logs/deployment/package-list-$CDATE.log && PackagedSoftware=`sed -n '1!p' $DIR/logs/deployment/package-list-$CDATE.log |cut -c9- |cut -d- -f1,2 |sort -u`
+
+  echo "(1-Application)Please input the Application software name to be deployed as the first parameter. If it is a new application software, Please submit it to the application administrator. Or the already packaged application software includes:"
+  echo "$PackagedSoftware"
+  echo "(2-VO)Please input the Virtual Organization name as the second parameter.Just use a space to separate the parameters.For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(3-Sites)And please input the grid sites file as the third parameter.Just use a space to separate the parameters. You can use auto-get-sites to create the available grid sites automatically."
+  /bin/rm -rf o..pacman..o 2>/dev/null
+  /bin/rm trusted.caches 2>/dev/null
+  }  
+  exit
+fi
+
+if [ "X$VO" == "X" ] || [ "X$SITE_FILE" == "X" ]; then
+  echo "(2)Please input the Virtual Organization name as the second parameter. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(3)And Please input the grid sites file as the third parameter.Just use a space to separate the parameters.You can use auto-get-sites to create the available grid sites file automatically."
+  exit
+fi
+
+echo "Application software $Application is being deployed within $VO Virtual Organization sites......"
+
+#$DIR/$Application-deploy.sh $VO $SITE_FILE
+i=1
+
+for SITE in $(awk '{print $1}' $SITE_FILE)
+do
+  echo $i
+  echo $SITE
+  APP=`sed -n "$i"p $SITE_FILE | awk {'print $2'}`
+  PACMAN=`sed -n "$i"p $SITE_FILE | awk {'print $3'}`
+  Signature=`sed -n "$i"p $SITE_FILE | awk {'print $4'}|cut -d- -f1,2`
+
+  # To create the pacman install script
+  echo "#/bin/sh" > $DIR/tmp/$Application-$SITE.sh
+  echo "cd  $APP/$VO/$USER/work-pac"  >> $DIR/tmp/$Application-$SITE.sh
+  echo "source $PACMAN/setup.sh"  >> $DIR/tmp/$Application-$SITE.sh
+  echo "$PACMAN/bin/pacman -clear-lock" >> $DIR/tmp/$Application-$SITE.sh
+  echo "$PACMAN/bin/pacman -trust-all-caches -get $REPOSITORY_HOME:$Application-$Signature"  >> $DIR/tmp/$Application-$SITE.sh
+  
+  #make a timestamp for the deployment log
+  echo "Starting `date`" >$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-out.log
+  echo "Starting `date`" >$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-err.log
+  
+  # To transmit and execute the pacman install script to the given grid site
+  #globus-job-run  $SITE  -stage $DIR/tmp/$Application-$SITE.sh
+  globus-url-copy  file://$DIR/tmp/$Application-$SITE.sh  gsiftp://$SITE$APP/$VO/$USER/$Application-$SITE.sh 2>>$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-err.log && globus-job-run  $SITE  /bin/sh $APP/$VO/$USER/$Application-$SITE.sh 1>>$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-out.log 2>>$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-err.log && echo "Deployment Ending `date`" >>$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-out.log || echo "Deployment Failed `date`" >>$DIR/logs/deployment/$Application-deploy-$SITE-$CDATE-out.log &
+
+  #to delete the tempory deploy file
+  #/bin/rm -f $DIR/tmp/$Application-$SITE.sh
+  i=`expr $i + 1`
+  sleep 1
+done
+num=`expr $i - 1`
+
+echo "It's still working for the deployment(a few minutes). At most, it will not take more than 50 minutes...."
+
+#automatically check the results (after the deployment finished on all of the sites)
+finishedN=0
+etime=0
+while (($finishedN < $num)) ; do
+
+finishedN=`tail -1 $DIR/logs/deployment/$Application-deploy-*-$CDATE-out.log |grep Deployment |wc -l`
+sleep 10
+#usually, the application deployment time, even for the dynamic build approach, will not exceed 45 min.
+etime=`expr $etime + 10`
+if [ "$etime" -gt 3000 ]; then
+/usr/bin/killall globus-job-run
+/usr/bin/killall globusrun
+fi
+
+done
+
+echo "The deployment was finished. You can check the standard output and error messge on each grid site in $DIR/logs/deployment/$Application-deploy-SITE-$CDATE-out.log and $DIR/logs/deployment/$Application-deploy-SITE-$CDATE-err.log." 
+
+#confirm the deployment
+echo "Now, it is confirming the successful deployment.Pleas wait a minute..."
+$DIR/bin/auto-check-app $VO $SITE_FILE $Application
+
+#To record it with the application version into versions-all-record.log 
+echo "$CDATE $Application DEPLOY on $num sites" >> $DIR/logs/applications/versions-all-record.log
+
+#To recored the command into the commands log file
+echo "$CDATE auto-depoy-app $Application $VO $SITE_FILE" >> $DIR/logs/commands

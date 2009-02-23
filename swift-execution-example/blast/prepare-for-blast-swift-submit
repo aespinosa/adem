@@ -40,8 +40,8 @@ do
   /bin/cp $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-template $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
   sed -i "s,\$DATA/\$VO/\$USER,$DATA/$VO/$USER,g"  $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
   sed -i "s,\$APP/osg,$APP/osg,g"  $DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE
-  globus-url-copy  file://$DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE gsiftp://$SITE$APP/$VO/$USER/work-pac/pirblast.sh
-  globus-job-run  $SITE /bin/chmod +x $APP/$VO/$USER/work-pac/pirblast.sh && echo "$NAME	pirblast	$APP/$VO/$USER/work-pac/pirblast.sh	INSTALLED	INTEL32::LINUX	null" >> $DIR/swift-execution-example/blast/blast-tc.data &
+  globus-url-copy  file://$DIR/swift-execution-example/blast/wrapper-bin/pirblast.sh-$SITE gsiftp://$SITE$APP/$VO/$USER/pirblast.sh
+  globus-job-run  $SITE /bin/chmod +x $APP/$VO/$USER/pirblast.sh && echo "$NAME	pirblast	$APP/$VO/$USER/pirblast.sh	INSTALLED	INTEL32::LINUX	null" >> $DIR/swift-execution-example/blast/blast-tc.data &
  
   i=`expr $i + 1`
 done

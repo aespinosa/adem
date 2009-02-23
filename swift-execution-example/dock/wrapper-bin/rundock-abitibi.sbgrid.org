@@ -57,11 +57,8 @@ subval()  # insert parameter values into the parameter template file
 
 loadfile $dock $dockpack
 cd $tmp
-cd ../../..
-temp=`/bin/pwd`
-
 ligfile=`basename $ligpath`
-lig=$temp/shared/$ligpath
+lig=$tmp/$ligpath
 
 work=`mktemp -d $userdir/dock.XXXXXX`
 cd $work

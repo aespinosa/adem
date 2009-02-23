@@ -1,0 +1,25 @@
+piranha.ie.lehigh.edu /osg/app /osg/install/pacman-3.21 
+julius.rcac.purdue.edu /scratch/caesar/apps /scratch/caesar/apps/houzx/pacman-3.21 linux-ia64-glibc2.4-gcc4.1.2
+gate01.aglt2.org /atlas/data08/OSG/APP /opt/pacman-3.26 linux-amd64-glibc2.3.4-gcc3.4.6
+osg-nemo-ce.phys.uwm.edu /opt/osg/app /opt/pacman linux-amd64-glibc2.5-gcc4.1.2
+cmsgrid01.hep.wisc.edu /afs/hep.wisc.edu/osg/app /cms/sw/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+condor.hpcc.nd.edu /dscratch/osg/app /opt/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+cmsgrid02.hep.wisc.edu /afs/hep.wisc.edu/osg/app /cms/sw/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+turner.physics.iastate.edu /home/grid/app /home/grid/app/houzx/pacman-3.21 
+osg.hpcc.nd.edu /dscratch/osg/app /opt/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+cit-gatekeeper.ultralight.org /raid1/osg-app /osg/1.0.0/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+u2-grid.ccr.buffalo.edu /san/scratch/grid/grid-tmp/grid-apps /opt/pacman/pacman-3.21 linux-amd64-glibc2.5-gcc4.1.2
+cms-xen2.fnal.gov /usr/local/osg-ce/OSG.DIRS/app /usr/local/osg-ce/pacman/pacman-3.24 linux-i686-glibc2.3.2-gcc3.2.3
+ce01.cmsaf.mit.edu /osg/app /app/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+proton.fis.cinvestav.mx /raid/osg_app /usr/local/pacman-3.21 linux-i686-glibc2.3.4-gcc3.4.6
+smufarm.physics.smu.edu /app /app/houzx/pacman-3.21 linux-i686-glibc2.3.4-gcc3.4.6
+grid3.aset.psu.edu /usr1/grid3/app /usr1/grid3/app/houzx/pacman-3.21 linux-i686-glibc2.3.4-gcc3.4.6
+iogw1.hpc.ufl.edu /scratch/ufhpc/osg/app /scratch/ufhpc/osg/pacman/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+osg-ligo.mit.edu /opt/storage/app /opt/pacman-3.21 linux-i686-glibc2.3.6-gcc4.0.2
+osg-ce.sprace.org.br /home/OSG_app/app /home/OSG_app/app/houzx/pacman-3.21 linux-i686-glibc2.3.4-gcc3.4.6
+grow.cs.uni.edu /app /opt/osg-0.8.0/pacman-3.21 linux-i686-glibc2.5-gcc4.1.1
+rocks-fe.cise-nsf.gov /share/apps/osg-apps /root/pacman-3.26 linux-i686-glibc2.5-gcc4.1.2
+lepton.rcac.purdue.edu /apps/osg /opt/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+gk01.atlas-swt2.org /cluster/grid/app /opt/pacman-3.21 linux-amd64-glibc2.3.4-gcc3.4.6
+antaeus.hpcc.ttu.edu /mnt/lustre/antaeus/apps /usr/local/pacman linux-amd64-glibc2.3.4-gcc3.4.6
+gk04.swt2.uta.edu /ifs1/osg/app /opt/pacman-3.21 linux-amd64-glibc2.3.2-gcc3.2.3

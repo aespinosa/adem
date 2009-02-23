@@ -22,7 +22,7 @@ userdir=/tmp
 dock=$userdir/dock
 dockpack=/afs/hep.wisc.edu/osg/data/houzx/dockKAGxNL.tar.gz
 # Dock app version
-dock6app=/afs/hep.wisc.edu/osg/app/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
+dock6app=/afs/hep.wisc.edu/osg/app/osg/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
 loadfile()
 {
     DIR_RAM="$1"

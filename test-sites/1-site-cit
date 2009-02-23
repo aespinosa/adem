@@ -1,0 +1,2 @@
+cit-gatekeeper.ultralight.org	/raid1/osg-app	/osg/0.8.0/pacman-3.21	linux-x86_64-glibc2.3.4-gcc3.4.6-mpich-1.2.7	/raid2/osg-data	condor	CIT_CMS_T2	/raid1/osg-app/osg/houzx/mpich-1.2.7
+#ce01.cmsaf.mit.edu      /osg/app        /app/pacman/pacman-3.21 linux-x86_64-glibc2.3.4-gcc3.4.6-mpich-1.2.7    /osg/data       condor  MIT_CMS /osg/app/osg/houzx/mpich-1.2.7

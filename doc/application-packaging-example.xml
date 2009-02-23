@@ -1,0 +1,35 @@
+<description>
+   <BasicDescription>
+   <ApplicationName>DOCK</ApplicationName> 
+   <Version>6.1</Version>
+   <Domain>Molecular Dynamics</Domain>
+   <Tarball>http://www.ci.uchicago.edu/~houzx/pac-cache/dock.6.1_source.tar.gz</Tarball>
+   </BasicDescription>
+
+   <Dependencies>
+   <command>/usr/bin/g77</command>
+   </Dependencies>
+   <Dependencies>
+   <command>/usr/bin/yacc</command>
+   </Dependencies>
+   <Dependencies>
+   <command>/usr/bin/flex</command>
+   </Dependencies>
+
+   <InstallationRequirments>
+   <OperatingSystems>
+        <OperatingSystem>unix</OperatingSystem>
+   </OperatingSystems>
+   </InstallationRequirments>
+   
+   <InstallationSteps> 
+   <configure>./configure gnu</configure>
+   <make>make all</make>
+   <test>
+       <cd>cd $DOCK_TAR/install/test</cd>
+       <execution>make test</execution>
+   </test>
+   </InstallationSteps>
+
+</description>
+

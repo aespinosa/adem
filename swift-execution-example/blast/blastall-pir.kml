@@ -1,0 +1,176 @@
+<project>
+  <import file="sys.xml"/>
+  <import file="scheduler.xml"/>
+  <import file="rlog.xml"/>
+  <import file="vdl.k"/>
+  <types>
+     <xs:schema targetNamespace="http://ci.uchicago.edu/swift/2007/07/swiftscript" xmlns="http://ci.uchicago.edu/swift/2007/07/swiftscript" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      	   <xs:simpleType name="database">
+      	   <xs:restriction base="string"/>
+      	   </xs:simpleType>
+      	   <xs:simpleType name="query">
+      	   <xs:restriction base="string"/>
+      	   </xs:simpleType>
+      	   <xs:simpleType name="output">
+      	   <xs:restriction base="string"/>
+      	   </xs:simpleType>
+      	   <xs:simpleType name="error">
+      	   <xs:restriction base="string"/>
+      	   </xs:simpleType>  
+     </xs:schema>	 
+  </types>
+  <global name="swift#string#17005">
+    <vdl:new type="string" value="-i" />
+  </global>
+  <global name="swift#string#17004">
+    <vdl:new type="string" value="-d" />
+  </global>
+  <global name="swift#string#17008">
+    <vdl:new type="string" value="-b" />
+  </global>
+  <global name="swift#string#17006">
+    <vdl:new type="string" value="-v" />
+  </global>
+  <global name="swift#string#17001">
+    <vdl:new type="string" value="blastp" />
+  </global>
+  <global name="swift#string#17003">
+    <vdl:new type="string" value="F" />
+  </global>
+  <global name="swift#string#17011">
+    <vdl:new type="string" value="/disks/ci-gpfs/swift/blast/pir/UNIPROT_for_blast_14.0.seq" />
+  </global>
+  <global name="swift#string#17010">
+    <vdl:new type="string" value="-o" />
+  </global>
+  <global name="swift#string#17009">
+    <vdl:new type="string" value="-m8" />
+  </global>
+  <global name="swift#string#17002">
+    <vdl:new type="string" value="-F" />
+  </global>
+  <global name="swift#string#17000">
+    <vdl:new type="string" value="-p" />
+  </global>
+  <global name="swift#string#17007">
+    <vdl:new type="string" value="300" />
+  </global>
+  <element name="blastall" arguments="out,err,i,db">
+    <vdl:typecheck argname="out" var="{out}" type="output"/>
+    <vdl:typecheck argname="err" var="{err}" type="error"/>
+    <vdl:typecheck argname="i" var="{i}" type="query"/>
+    <vdl:typecheck argname="db" var="{db}" type="database"/>
+    <log>
+      <string>info</string>
+      <string>PROCEDURE thread={#thread} name=blastall</string>
+    </log>
+    <parameterlog>
+    <string>input</string>
+    <string>i</string>
+    <vdl:getdatasetprovenanceid var="{i}" />
+    </parameterlog>
+    <parameterlog>
+    <string>input</string>
+    <string>db</string>
+    <vdl:getdatasetprovenanceid var="{db}" />
+    </parameterlog>
+    <parameterlog>
+    <string>output</string>
+    <string>out</string>
+    <vdl:getdatasetprovenanceid var="{out}" />
+    </parameterlog>
+    <parameterlog>
+    <string>output</string>
+    <string>err</string>
+    <vdl:getdatasetprovenanceid var="{err}" />
+    </parameterlog>
+    <vdl:execute>
+      <vdl:tr>blastall</vdl:tr>
+      <vdl:stagein var="{i}"/>
+      <vdl:stagein var="{db}"/>
+      <vdl:stageout var="{out}"/>
+      <vdl:stageout var="{err}"/>
+      <vdl:arguments>
+        <variable>swift#string#17000</variable>
+        <variable>swift#string#17001</variable>
+        <variable>swift#string#17002</variable>
+        <variable>swift#string#17003</variable>
+        <variable>swift#string#17004</variable>
+        <swiftscript:filename>
+         <variable>db</variable> 
+        </swiftscript:filename>
+        <variable>swift#string#17005</variable>
+        <swiftscript:filename>
+         <variable>i</variable> 
+        </swiftscript:filename>
+        <variable>swift#string#17006</variable>
+        <variable>swift#string#17007</variable>
+        <variable>swift#string#17008</variable>
+        <variable>swift#string#17007</variable>
+        <variable>swift#string#17009</variable>
+        <variable>swift#string#17010</variable>
+        <swiftscript:filename>
+         <variable>out</variable> 
+        </swiftscript:filename>
+      </vdl:arguments>
+      <vdl:stderr>
+        <swiftscript:filename>
+         <variable>err</variable> 
+        </swiftscript:filename>
+      </vdl:stderr>
+    </vdl:execute>
+    <vdl:closedataset var="{out}"/>
+    <vdl:closedataset var="{err}"/></element>
+
+  <set name="pir">
+    <vdl:new type="database" dbgname="pir">
+      <vdl:mapping descriptor="simple_mapper">
+        <vdl:parameter name="prefix"><variable>swift#string#17011</variable></vdl:parameter>
+        <vdl:parameter name="input" value="true" />
+      </vdl:mapping>
+    </vdl:new>
+  </set>
+  <set name="out">
+        <vdl:new type="output" dbgname="out" waitfor="88000">
+          <vdl:mapping descriptor="single_file_mapper">
+            <vdl:parameter name="file" value="test.out"/>
+          </vdl:mapping>
+        </vdl:new>
+  </set>
+  <set name="i">
+        <vdl:new type="query" dbgname="i">
+          <vdl:mapping descriptor="single_file_mapper">
+            <vdl:parameter name="file" value="test.in"/>
+            <vdl:parameter name="input" value="true" />
+          </vdl:mapping>
+        </vdl:new>
+  </set>
+  <set name="err">
+        <vdl:new type="error" dbgname="err" waitfor="88001">
+          <vdl:mapping descriptor="single_file_mapper">
+            <vdl:parameter name="file" value="test.err"/>
+          </vdl:mapping>
+        </vdl:new>
+  </set>
+  <restartLog>
+  	<vdl:mains>
+<!-- TODO can move into vdl:mains so karajan files are smaller -->
+		<vdl:startprogressticker />
+		<vdl:mainp>
+		      <sequential>
+		        <blastall>
+		          <parallel>
+		            <variable>out</variable>
+		            <variable>err</variable>
+		            <variable>i</variable>
+		            <variable>pir</variable>
+		          </parallel>
+		        </blastall>
+		          <partialCloseDataset var="{out}" closeID="88000" />
+		          <partialCloseDataset var="{err}" closeID="88001" />
+		      </sequential>
+		</vdl:mainp>
+		<vdl:stopprogressticker />
+	</vdl:mains>
+  </restartLog>  
+</project>

@@ -1,0 +1,2 @@
+red.unl.edu     /mnt/nfs04/opt/osg/app    /opt-head/osg/pacman/pacman-3.26  linux-x86_64-glibc2.3.4-gcc3.4.6-DefaultMPI       /mnt/nfs03/zeng/osg_data/data   condor Nebraska /usr
+

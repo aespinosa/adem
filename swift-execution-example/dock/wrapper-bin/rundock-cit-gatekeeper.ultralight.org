@@ -17,12 +17,14 @@ ligpath=$1
 targets=$2
 
 time=`which time` # to get [/fuse]/usr/bin/time, not time builtin
+#tmp=/dev/shm
 tmp=`/bin/pwd`
 userdir=/tmp
 dock=$userdir/dock
-dockpack=/raid2/osg-data/houzx/dockKAGxNL.tar.gz
+#dockpack=/home/ligandatlas/packages/dockKAGxNL.tar.gz
+dockpack=/raid2/osg-data/osg/houzx/dockKAGxNL.tar.gz
 # Dock app version
-dock6app=/raid1/osg-app/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
+dock6app=/raid1/osg-app/osg/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
 loadfile()
 {
     DIR_RAM="$1"

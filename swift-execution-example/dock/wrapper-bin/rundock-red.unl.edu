@@ -20,9 +20,9 @@ time=`which time` # to get [/fuse]/usr/bin/time, not time builtin
 tmp=`/bin/pwd`
 userdir=/tmp
 dock=$userdir/dock
-dockpack=/opt/osg/data/houzx/dockKAGxNL.tar.gz
+dockpack=/mnt/nfs03/zeng/osg_data/data/houzx/dockKAGxNL.tar.gz
 # Dock app version
-dock6app=/opt/osg/app/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
+dock6app=/mnt/nfs04/opt/osg/app/osg/houzx/work-pac/dock6/bin/dock6       # for test at hpc.ufl 
 loadfile()
 {
     DIR_RAM="$1"

@@ -1,4 +1,4 @@
 #sitename transformation  path    INSTALLED       platform        profiles
-Clemson-ciTeam	rundock		/export/osg/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
-RENCI-Engagement	rundock		/nfs/osg-data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
-NYSGRID-RIT	rundock		/opt/osg/osg_data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+SBGrid-Harvard-Exp	rundock		/se/data/vo/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+SBGrid-Harvard-East	rundock		/osg/storage/data/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null
+Purdue-Steele	rundock		/scratch/osg/osg/houzx/rundock	INSTALLED	INTEL32::LINUX	null

@@ -1,0 +1,277 @@
+##check preparation result for blast
+abitibi.sbgrid.org
+-rwxr-xr-x 1 osg osg 0 Nov 19 22:02 /se/app/vo/osg/houzx/pirblast.sh
+antaeus.hpcc.ttu.edu
+total 4688920
+drwxr-xr-x  2 osg tigre       4096 Nov 10 11:39 .
+drwxr-xr-x  3 osg tigre       4096 Nov 10 16:52 ..
+-rw-r--r--  1 osg tigre 2187122096 Nov  4 17:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg tigre  204106872 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg tigre   23001752 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg tigre  999999669 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg tigre  233680738 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg tigre   26330312 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg tigre  999999864 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg tigre   21034886 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg tigre    2370216 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg tigre  103755125 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg tigre        208 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg tigre 686 Nov 19 21:02 /mnt/lustre/antaeus/apps/osg/houzx/pirblast.sh
+belhaven-1.renci.org
+total 4688984
+drwxr-xr-x  2 osg osg       4096 Nov 10 12:39 .
+drwxr-xr-x 10 osg osg       4096 Dec 26 11:38 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg osg 675 Nov 19 22:02 /nfs/osg-app/osg/houzx/pirblast.sh
+ce01.cmsaf.mit.edu
+total 4693584
+drwxr-xr-x  2 osg01 osg01       4096 Nov 10 12:39 .
+drwxr-xr-x  4 osg01 osg01       4096 Dec 24 15:48 ..
+-rw-r--r--  1 osg01 osg01 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg01 osg01  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg01 osg01   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg01 osg01  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg01 osg01  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg01 osg01   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg01 osg01  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg01 osg01   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg01 osg01    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg01 osg01  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg01 osg01        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg01 osg01 667 Dec 24 15:33 /osg/app/osg/houzx/pirblast.sh
+cit-gatekeeper.ultralight.org
+total 4688900
+drwxr-xr-x  2 osg osg       4096 Nov 10 09:39 .
+drwxr-xr-x  3 osg osg         89 Dec 24 12:16 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 15:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 15:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 15:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 15:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 15:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg osg 679 Dec 24 12:14 /raid1/osg-app/osg/houzx/pirblast.sh
+cmsgrid01.hep.wisc.edu
+total 4688879
+drwxr-xr-x  2 osg_mis osg_mis       2048 Nov 10 11:39 .
+drwxr-xr-x  5 osg_mis osg_mis       2048 Dec  2 11:23 ..
+-rw-r--r--  1 osg_mis osg_mis 2187122096 Nov  4 17:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg_mis osg_mis  204106872 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg_mis osg_mis   23001752 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg_mis osg_mis  999999669 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg_mis osg_mis  233680738 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg_mis osg_mis   26330312 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg_mis osg_mis  999999864 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg_mis osg_mis   21034886 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg_mis osg_mis    2370216 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg_mis osg_mis  103755125 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg_mis osg_mis        208 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 anon osg_mis 701 Nov 19 21:00 /afs/hep.wisc.edu/osg/app/osg/houzx/pirblast.sh
+gate01.aglt2.org
+total 4689160
+drwxr-xr-x  2 osg osg       4096 Nov 10 12:39 .
+drwxr-xr-x  6 osg osg        133 Dec 26 11:38 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg osg 693 Nov 19 22:01 /atlas/data08/OSG/APP/osg/houzx/pirblast.sh
+grow.cs.uni.edu
+iogw1.hpc.ufl.edu
+total 4689232
+drwxr-xr-x  2 osg avery       4096 Nov 10 12:39 .
+drwxr-xr-x  5 osg avery       4096 Dec 26 11:38 ..
+-rw-r--r--  1 osg avery 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg avery  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg avery   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg avery  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg avery  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg avery   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg avery  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg avery   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg avery    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg avery  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg avery        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg avery 695 Dec 19 17:15 /scratch/ufhpc/osg/app/osg/houzx/pirblast.sh
+lepton.rcac.purdue.edu
+total 4689088
+drwxr-xr-x  2 osg osgusers       2048 Nov 10 12:39 .
+drwxr-xr-x  4 osg osgusers       2048 Dec 19 16:40 ..
+-rw-r--r--  1 osg osgusers 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osgusers  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osgusers   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osgusers  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osgusers  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osgusers   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osgusers  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osgusers   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osgusers    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osgusers  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osgusers        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+neuroinformatics.harvard.edu
+total 4688948
+drwxr-xr-x  2 osg osg       4096 Nov 10 12:39 .
+drwxr-xr-x 10 osg osg       4096 Dec 26 11:38 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg osg 683 Nov 19 22:02 /osg/storage/app/osg/houzx/pirblast.sh
+osgce.cs.clemson.edu
+total 4693532
+drwxr-xr-x  2 osg osg       4096 Nov 10 12:39 .
+drwxr-xr-x 10 osg osg       4096 Dec 26 11:38 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg osg 681 Nov 19 22:00 /export/osg/app/osg/houzx/pirblast.sh
+osg-ce.sprace.org.br
+osg-gw-4.t2.ucsd.edu
+osg.hpcc.nd.edu
+total 4698152
+drwxr-xr-x  2 osg osgusers       4096 Nov 10 12:39 .
+drwxr-xr-x  5 osg osgusers       4096 Nov 12 15:29 ..
+-rw-r--r--  1 osg osgusers 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osgusers  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osgusers   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osgusers  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osgusers  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osgusers   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osgusers  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osgusers   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osgusers    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osgusers  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osgusers        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg osgusers 0 Nov 19 22:01 /dscratch/osg/app/osg/houzx/pirblast.sh
+osg-ligo.mit.edu
+total 4707280
+drwxr-xr-x   2 osg users       1024 Nov 10 12:39 .
+drwxr-xr-x  12 osg users       1024 Dec 26 11:38 ..
+-rw-r--r--   1 osg users 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--   1 osg users  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--   1 osg users   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--   1 osg users  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--   1 osg users  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--   1 osg users   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--   1 osg users  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--   1 osg users   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--   1 osg users    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--   1 osg users  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--   1 osg users        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg users 683 Nov 19 22:03 /opt/storage/app/osg/houzx/pirblast.sh
+osg-nemo-ce.phys.uwm.edu
+total 4688908
+drwxr-xr-x  2 osg grid3       4096 Nov 10 11:39 .
+drwxr-xr-x 10 osg grid3       4096 Dec 26 10:38 ..
+-rw-r--r--  1 osg grid3 2187122096 Nov  4 17:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg grid3  204106872 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg grid3   23001752 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg grid3  999999669 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg grid3  233680738 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg grid3   26330312 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg grid3  999999864 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg grid3   21034886 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg grid3    2370216 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg grid3  103755125 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg grid3        208 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg grid3 675 Nov 19 21:00 /opt/osg/app/osg/houzx/pirblast.sh
+proton.fis.cinvestav.mx
+total 4693532
+drwxr-xr-x  2 osg cms       4096 Nov 10 11:39 .
+drwxr-xr-x  3 osg cms       4096 Nov 11 18:40 ..
+-rw-r--r--  1 osg cms 2187122096 Nov  4 17:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg cms  204106872 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg cms   23001752 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg cms  999999669 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg cms  233680738 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg cms   26330312 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg cms  999999864 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg cms   21034886 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg cms    2370216 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg cms  103755125 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg cms        208 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg cms 677 Nov 19 21:02 /raid/osg_app/osg/houzx/pirblast.sh
+red.unl.edu
+total 4688944
+drwxr-xr-x  2 osg osg       4096 Nov 10 11:39 .
+drwxr-xr-x  4 osg osg        117 Dec 24 13:25 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 17:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 17:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 17:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x  1 osg osg 701 Nov 30 17:41 /opt/osg/app/osg/houzx/pirblast.sh
+u2-grid.ccr.buffalo.edu
+total 4691344
+drwxr-xr-x 2 osg osg       1024 Nov 10 12:39 .
+drwxr-xr-x 6 osg osg       1024 Nov 30 17:48 ..
+-rw-r--r-- 1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r-- 1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r-- 1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r-- 1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r-- 1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r-- 1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r-- 1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r-- 1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r-- 1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r-- 1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r-- 1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg osg 722 Nov 30 16:51 /san/scratch/grid/grid-tmp/grid-apps/osg/houzx/pirblast.sh
+uscms1.fltech-grid3.fit.edu
+total 4688908
+drwxr-xr-x  2 osg osg       4096 Nov 10 12:39 .
+drwxrwxr-x 10 osg osg       4096 Dec 26 11:38 ..
+-rw-r--r--  1 osg osg 2187122096 Nov  4 18:56 UNIPROT_for_blast_14.0.seq
+-rw-r--r--  1 osg osg  204106872 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.phr
+-rw-r--r--  1 osg osg   23001752 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.pin
+-rw-r--r--  1 osg osg  999999669 Nov  4 18:56 UNIPROT_for_blast_14.0.seq.00.psq
+-rw-r--r--  1 osg osg  233680738 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.phr
+-rw-r--r--  1 osg osg   26330312 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.pin
+-rw-r--r--  1 osg osg  999999864 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.01.psq
+-rw-r--r--  1 osg osg   21034886 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.phr
+-rw-r--r--  1 osg osg    2370216 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.pin
+-rw-r--r--  1 osg osg  103755125 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.02.psq
+-rw-r--r--  1 osg osg        208 Nov  4 18:57 UNIPROT_for_blast_14.0.seq.pal
+-rwxr-xr-x 1 osg osg 685 Nov 19 22:00 /mnt/nas0/OSG/APP/osg/houzx/pirblast.sh

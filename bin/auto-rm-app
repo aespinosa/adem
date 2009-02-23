@@ -1,5 +1,7 @@
+#/bin/bash!
 DIR="$ADEM_HOME"
 USER=`whoami`
+CDATE=`date +%F-%R`
 i=1
 
 Application=$1
@@ -7,26 +9,27 @@ VO=$2
 SITE_FILE=$3
 if [ "$Application" == "" ]; then
   {
-  echo "(1)Please input the Package name to be removed as the first parameter. The current Application Package name can be:"
-  echo "ALL afni Gcc angle mpiblast blast mysql-python nab dock  octave Flex fred R freesurfer Yacc"
+  echo "It's checking the available application names in the repository..."
+  #get the packaged application software from the Pacman cache
+  pacman -trust-all-caches -lc $REPOSITORY_HOME > $DIR/logs/deployment/package-list-$CDATE.log && PackagedSoftware=`sed -n '1!p' $DIR/logs/deployment/package-list-$CDATE.log |cut -c9- |cut -d- -f1,2 |sort -u`
+
+  echo "(1-Application)Please input the Application software name to be removed as the first parameter. 'ALL' Or the already packaged application software are:"
+  echo "$PackagedSoftware"
+  echo "(2-VO)Please input the Virtual Organization you belong to as the second parameter. For osg, vo can be:"
+  echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
+  echo "(3-Sites)And please input the grid sites file as the third parameter.Just use a space to separate the parameters. You can use auto-get-sites to create the available grid sites automatically."
+  /bin/rm -rf o..pacman..o 2>/dev/null
+  /bin/rm trusted.caches 2>/dev/null
+  }
+  exit
+fi
+
+if [ "X$VO" == "X" ] || [ "$SITE_FILE" == "" ]; then
+  {
   echo "(2)Please input the Virtual Organization you belong to as the second parameter. For osg, vo can be:"
   echo "CDF CMS CompBioGrid DES DOSAR DZero Engage Fermilab fMRI GADU geant4 GLOW GPN GRASE GridChem GridEx GROW i2u2 iVDGL LIGO mariachi MIS  nanoHUB NWICG  Ops  OSG OSGEDU SDSS STAR USATLAS. For Teragrid, vo just use: teragrid."
   echo "(3)And please input the grid sites file as the third parameter.Just use a space to separate the parameters. You can use auto-get-sites to create the available grid sites automatically."
-  }
-  exit
-fi
-
-if [ "X$VO" == "X" ]; then
-  {
-  echo "No virtual organization. Please input the Application package name to be removed as the first parameter, the virutal organization you belong to as the second parameter, and the grid sites file as the third parameter. Just use a space to separate among the parameters."
    }
-  exit
-fi
-
-if [ "$SITE_FILE" == "" ]; then
-  {
-  echo "Oh,no grid sites file,where to remove from?Please input the Application package name to be removed as the first parameter, the virutal organization you belong to as the second parameter, and the grid sites file as the third parameter.Just use a space to separate among the parameters.You can use auto-get-sites to create the available grid sites automatically."
-  }
   exit
 fi
 
@@ -58,17 +61,24 @@ do
   esac
 
   #make a timestamp for log
-  echo "starting `date`" >>$DIR/tmp/$Application-rm-$SITE.log
-  echo "starting `date`" >>$DIR/tmp/$Application-rm-$SITE-err.log
+  echo "Starting `date`" >$DIR/logs/management/$Application-rm-$SITE-$CDATE.log
+  echo "Starting `date`" >$DIR/logs/management/$Application-rm-$SITE-$CDATE.err
 
   # To transmit and execute the pacman remove script to the given grid site
   #globus-job-run  $SITE  -stage $DIR/tmp/$Application-rm-$SITE.sh
-  globus-url-copy  file://$DIR/tmp/$Application-rm-$SITE.sh  gsiftp://$SITE$APP/$VO/$USER/$Application-rm-$SITE.sh && globus-job-run  $SITE  /bin/sh $APP/$VO/$USER/$Application-rm-$SITE.sh 1>>$DIR/tmp/$Application-rm-$SITE.log 2>>$DIR/tmp/$Application-rm-$SITE.log && echo "Ending `date`" >> $DIR/tmp/$Application-rm-$SITE.log &
+  globus-url-copy  file://$DIR/tmp/$Application-rm-$SITE.sh  gsiftp://$SITE$APP/$VO/$USER/$Application-rm-$SITE.sh 2>>$DIR/logs/management/$Application-rm-$SITE-$CDATE.err && globus-job-run  $SITE  /bin/sh $APP/$VO/$USER/$Application-rm-$SITE.sh 1>>$DIR/logs/management/$Application-rm-$SITE-$CDATE.log 2>>$DIR/logs/management/$Application-rm-$SITE-$CDATE.err && echo "Ending `date`" >> $DIR/logs/management/$Application-rm-$SITE-$CDATE.log &
 
-  #to delete the tempory deploy file
+  #to delete the tempory remove file
   #/bin/rm -f $DIR/tmp/$Application-rm-$SITE.sh
 
   i=`expr $i + 1` 
 done
 
-echo "Please see error messages in $DIR/tmp/$Application-rm-SITE.log"
+echo "Please see remove result in $DIR/logs/management/$Application-rm-SITE-$CDATE.log and any  error messages in $DIR/logs/management/$Application-rm-SITE-$CDATE.err"
+
+#To record it with the application version into versions-all-record.log 
+num=`expr $i - 1`
+echo "$CDATE $Application REMOVE on $num sites" >> $DIR/logs/applications/versions-all-record.log
+
+#To recored the command into the commands log file
+echo "$CDATE auto-rm-app $Application $VO $SITE_FILE" >> $DIR/logs/commands

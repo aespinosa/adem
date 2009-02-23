@@ -1,0 +1,1 @@
+osg-ce.sprace.org.br  /home/OSG_app/app  /opt/pacman-3.26  linux-i686-glibc2.3.4-gcc3.4.6-mpich-1.2.7  /home/OSG_app/data  condor  SPRACE  /home/OSG_app/app/osg/houzx/mpich-1.2.7

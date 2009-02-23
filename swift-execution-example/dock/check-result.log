@@ -1,0 +1,61 @@
+#check preparation for swift exection on Dock
+abitibi.sbgrid.org
+SBGrid-Harvard-Exp
+#antaeus.hpcc.ttu.edu
+#TTU-ANTAEUS
+belhaven-1.renci.org
+RENCI-Engagement
+-rw-r--r-- 1 osg osg 62834364 Oct 24 10:39 /nfs/osg-data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x 1 osg osg 2860 Oct 24 10:38 /nfs/osg-data/osg/houzx/rundock
+ce01.cmsaf.mit.edu
+MIT_CMS
+-rw-r--r--  1 osg01 osg01 62834364 Dec 24 14:38 /osg/data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x  1 osg01 osg01 2850 Dec 24 14:37 /osg/data/osg/houzx/rundock
+cit-gatekeeper.ultralight.org
+CIT_CMS_T2
+-rw-r--r--  1 osg osg 62834364 Dec 24 11:38 /raid2/osg-data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x  1 osg osg 2873 Dec 24 11:37 /raid2/osg-data/osg/houzx/rundock
+#cmsgrid01.hep.wisc.edu
+#GLOW
+-rwxr-xr-x  1 anon osg_mis 2815 Dec  1 17:39 /afs/hep.wisc.edu/osg/data/osg/houzx/rundock
+gate01.aglt2.org
+AGLT2
+grow.cs.uni.edu
+GROW-UNI-P
+#iogw1.hpc.ufl.edu
+#UFlorida-HPC
+-rwxr-xr-x  1 osg avery 2800 Jul 30 13:23 /scratch/ufhpc/osg/data/osg/houzx/rundock
+lepton.rcac.purdue.edu
+Purdue-Steele
+neuroinformatics.harvard.edu
+SBGrid-Harvard-East
+osgce.cs.clemson.edu
+Clemson-ciTeam
+-rw-r--r-- 1 osg osg 62834364 Oct 24 10:38 /export/osg/data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x 1 osg osg 2866 Oct 24 10:38 /export/osg/data/osg/houzx/rundock
+osg-ce.sprace.org.br
+SPRACE-CE
+osg-gw-4.t2.ucsd.edu
+UCSDT2-B
+osg.hpcc.nd.edu
+NWICG_NotreDame
+-rw-r--r--  1 osg osgusers 62834364 Jul 28 23:54 /dscratch/osg/data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x  1 osg osgusers 2770 Jul 30 13:25 /dscratch/osg/data/osg/houzx/rundock
+#osg-ligo.mit.edu
+#OSG_LIGO_MIT
+-rwxr-xr-x  1 osg users 2761 Jul 30 13:24 /opt/storage/data/osg/houzx/rundock
+#osg-nemo-ce.phys.uwm.edu
+#LIGO_UWM_NEMO
+-rwxr-xr-x 1 osg grid3 2860 Dec 11 18:42 /opt/osg/data/osg/houzx/rundock
+proton.fis.cinvestav.mx
+cinvestav
+-rw-r--r--  1 osg cms 62834364 Jul 28 22:55 /raid/osg_data/osg/houzx/dockKAGxNL.tar.gz
+-rwxr-xr-x  1 osg cms 2763 Jul 30 12:38 /raid/osg_data/osg/houzx/rundock
+#red.unl.edu
+#Nebraska
+-rwxr-xr-x  1 osg osg 2804 Dec  1 15:07 /opt/osg/data/osg/houzx/rundock
+#u2-grid.ccr.buffalo.edu
+#NYSGRID-CCR-U2
+-rwxr-xr-x 1 osg osg 2837 Jul 30 13:25 /san/scratch/grid/grid-tmp/grid-data/osg/houzx/rundock
+uscms1.fltech-grid3.fit.edu
+FLTECH

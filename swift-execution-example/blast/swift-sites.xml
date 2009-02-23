@@ -108,4 +108,18 @@ working directory.
 <workdirectory >/mnt/nas0/OSG/DATA/osg/houzx</workdirectory>
 </pool>
 
+<pool handle="NYSGRID-CCR-U2" sysinfo="INTEL32::LINUX">
+  <gridftp  url="gsiftp://u2-grid.ccr.buffalo.edu" storage="/san/scratch/grid/grid-tmp/grid-data/osg/houzx" major="2" minor="2" patch="4">
+  </gridftp>
+  <jobmanager universe="vanilla" url="u2-grid.ccr.buffalo.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+  <workdirectory >/san/scratch/grid/grid-tmp/grid-data/osg/houzx</workdirectory>
+</pool>
+
+  <pool handle="GLOW" sysinfo="INTEL32::LINUX">
+    <gridftp  url="gsiftp://cmsgrid01.hep.wisc.edu" storage="/afs/hep.wisc.edu/osg/data/osg/houzx" major="2" minor="2" patch="4">
+    </gridftp>
+    <jobmanager universe="vanilla" url="cmsgrid01.hep.wisc.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+    <workdirectory >/afs/hep.wisc.edu/osg/data/osg/houzx</workdirectory>
+  </pool>
+
 </config>

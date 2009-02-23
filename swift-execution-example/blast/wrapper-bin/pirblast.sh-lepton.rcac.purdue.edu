@@ -8,7 +8,7 @@ SEQID=$1
 SEQUENCE=$2
 
 PIR=/scratch/osg/osg/houzx/pir
-blastapp=/apps/osg/houzx/work-pac/blast-2.2.10/bin/blastall
+blastapp=/apps/osg/osg/houzx/work-pac/blast-2.2.10/bin/blastall
 
 OUTDIR=/tmp/out
 

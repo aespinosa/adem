@@ -1,3 +1,2 @@
 #sitename transformation  path    INSTALLED       platform        profiles
-UCSDT2-B	pirblast	/code/osgcode/osg/houzx/work-pac/pirblast.sh	INSTALLED	INTEL32::LINUX	null
-cinvestav	pirblast	/raid/osg_app/osg/houzx/work-pac/pirblast.sh	INSTALLED	INTEL32::LINUX	null
+SBGrid-Harvard-Exp	pirblast	/se/app/vo/osg/houzx/pirblast.sh	INSTALLED	INTEL32::LINUX	null

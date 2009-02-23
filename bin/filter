@@ -10,7 +10,7 @@ if [ ! -f $ADEM_HOME/swift-execution-example/swift-sites.xml ]; then
    echo "Please use the auto-get-sites to generate the sites file automatically."
 fi
 
-SITES="/home/houzx/adem-osg/swift-execution-example/swift-sites.xml"
+SITES="$ADEM_HOME/swift-execution-example/swift-sites.xml"
 
 while [ $# -ne 0 ]
 do

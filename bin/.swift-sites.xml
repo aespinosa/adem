@@ -88,10 +88,10 @@ working directory.
   </pool>
 
   <pool handle="TTU-ANTAEUS" sysinfo="INTEL32::LINUX">
-    <gridftp  url="gsiftp://antaeus.hpcc.ttu.edu" storage="/mnt/hep/$VO/$USER" major="2" minor="2" patch="4">
+    <gridftp  url="gsiftp://antaeus.hpcc.ttu.edu" storage="/mnt/hep/osg/$VO/$USER" major="2" minor="2" patch="4">
     </gridftp>
     <jobmanager universe="vanilla" url="antaeus.hpcc.ttu.edu/jobmanager-condor" major="2" minor="2" patch="4" />
-    <workdirectory >/mnt/hep/$VO/$USER</workdirectory>
+    <workdirectory >/mnt/hep/osg/$VO/$USER</workdirectory>
   </pool>
 
   <pool handle="UCSDT2" sysinfo="INTEL32::LINUX">
@@ -232,6 +232,55 @@ working directory.
 </gridftp>
 <jobmanager universe="vanilla" url="uscms1.fltech-grid3.fit.edu/jobmanager-condor" major="2" minor="2" patch="4" />
 <workdirectory >/mnt/nas0/OSG/DATA/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="NWICG_NDCCL" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://condor.hpcc.nd.edu" storage="/dscratch/osg/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="condor.hpcc.nd.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+<workdirectory >/dscratch/osg/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="CLEMSON-IT" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://osggate.clemson.edu" storage="/scratch/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="osggate.clemson.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+<workdirectory >/scratch/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="SMU_PHY" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://smufarm.physics.smu.edu" storage="/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="smufarm.physics.smu.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+<workdirectory >/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="UC_Teraport" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://tp-osg.uchicago.edu" storage="/gpfs1/osg/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="tp-osg.uchicago.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+<workdirectory >/gpfs1/osg/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="GPN-HUSKER" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://gpn-husker.unl.edu" storage="/opt/osg/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="gpn-husker.unl.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+<workdirectory >/opt/osg/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="UTA_SWT2" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://gk04.swt2.uta.edu" storage="/ifs1/grid/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="gk04.swt2.uta.edu/jobmanager-pbs" major="2" minor="2" patch="4" />
+<workdirectory >/ifs1/grid/data/$VO/$USER</workdirectory>
+</pool>
+
+<pool handle="UFlorida-PG" sysinfo="INTEL32::LINUX">
+<gridftp url="gsiftp://pg.ihepa.ufl.edu" storage="/raid/osgpg/pg/data/$VO/$USER" major="2" minor="2" patch="4">
+</gridftp>
+<jobmanager universe="vanilla" url="pg.ihepa.ufl.edu/jobmanager-condor" major="2" minor="2" patch="4" />
+<workdirectory >/raid/osgpg/pg/data/$VO/$USER</workdirectory>
 </pool>
 
 </config>

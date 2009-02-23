@@ -1,0 +1,1 @@
+u2-grid.ccr.buffalo.edu /san/scratch/grid/grid-tmp/grid-apps    /opt/pacman/pacman-3.21  linux-x86_64-glibc2.5-gcc4.1.2-mpich-1.2.7      /san/scratch/grid/grid-tmp/grid-data     pbs     NYSGRID-CCR-U2  /san/scratch/grid/grid-tmp/grid-apps/osg/houzx/mpich-1.2.7
