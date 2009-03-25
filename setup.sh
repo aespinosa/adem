@@ -23,7 +23,6 @@ fi
 grid-proxy-info 1>/dev/null 2>/dev/null
 if [ "$?" != 0 ]; then
   echo "ERROR: Couldn not find a valid proxy, Please check your grid proxy!"
-  exit 1
   else 
   {
   timel=`grid-proxy-info  |grep timeleft |cut -d: -f2`
