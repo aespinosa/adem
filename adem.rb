@@ -128,16 +128,14 @@ def pacman_find(site, conf)
   contact = site_fork site[:compute_element]
   storage = site[:storage_element].first
   rootdir = site[:app_directory] + "/" + conf[:virtual_organization] 
-  script = <<-eos
-#!/bin/bash
-which pacman
-  eos
-  File.open("/tmp/find_pacman.sh", "w") do |dump|
-    dump << script
+  File.open("find_pacman.sh", "w") do |dump|
+    dump.puts "#!/bin/bash"
+    dump.puts "which pacman"
   end
-  `globus-url-copy -cd file:///tmp/find_pacman.sh #{storage}#{rootdir}/find_pacman.sh`
-  `globus-job-run #{contact} -d #{rootdir} /bin/chmod 755 find_pacman.sh`
-  File.dirname(File.dirname(`globus-job-run #{contact} -d #{rootdir} find_pacman.sh`))
+  File.chmod 0755, "find_pacman.sh"
+  resp = `globus-job-run #{contact} -d #{rootdir} -stage find_pacman.sh`
+  File.delete "find_pacman.sh"
+  File.dirname(File.dirname(resp))
 end
 
 def config(args, config_file)
