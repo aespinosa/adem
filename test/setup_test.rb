@@ -12,8 +12,8 @@ module Adem
         :ress_server          => "osg-ress-1.fnal.gov",
         :virtual_organization => "engage"
       }
-      @site_list = File.open("sites").read
-      @ress = File.open("dummy_ress").read
+      @site_list = File.open("test/dummy_sites").read
+      @ress = File.open("test/dummy_ress").read
     end
   end
 end
