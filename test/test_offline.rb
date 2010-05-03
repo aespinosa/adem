@@ -15,7 +15,7 @@ class OfflineTest < Test::Unit::TestCase
   def test_sites_from_file
     conf = @conf
     site_list = YAML.load @site_list
-    assert_equal(site_list, sites(nil, conf, "sites"))
+    assert_equal(site_list, sites(nil, conf, "test/dummy_sites"))
   end
 
   def test_site_fork
