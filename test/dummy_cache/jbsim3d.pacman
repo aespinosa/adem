@@ -1,0 +1,8 @@
+description = 'jbsim3d package'
+version('r794')
+platform('linux-rhel-5')
+processor('x86_64');
+{
+  downloadUntarzip('http://www.ci.uchicago.edu/~aespinosa/Cybershake/tarballs/jbsim3d_r794~RHEL5_amd64.tar.gz',
+    'POSTPROC')
+}

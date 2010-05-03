@@ -1,5 +1,26 @@
+require 'optparse'
+
 def app(args, conf)
-  "app"
+  options = {}
+  optparse = OptionParser.new do |opts|
+    opts.banner = "Usage: adem app [options]"
+
+    opts.on('-l', '--avail', 'Available packages from cache') do
+      puts "Packages available from #{conf[:pacman_cache]}"
+      puts app_avail(conf[:pacman_cache]).grep /[(\ |\*)]/
+    end
+
+    opts.on('-i', '--install PACKAGE', 'Package to install') do |package|
+      puts "Installing #{package}"
+      app_install package, conf
+    end
+
+    opts.on_tail('-h', '--help', 'Show this help message') do
+      puts opts
+      exit
+    end
+  end
+  optparse.parse!
 end
 
 def app_avail(pacman_cache)
@@ -48,5 +69,3 @@ def pacman_install(package, target)
   File.delete "pacman_install.sh"
   resp
 end
-
-

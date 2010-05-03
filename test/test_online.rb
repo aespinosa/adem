@@ -34,9 +34,9 @@ class OnlineTest < Test::Unit::TestCase
   end
 
   def test_app_avail
-    pacman_cache = @conf[:pacman_cache]
+    pacman_cache = "test/dummy_cache"
     response = <<-eos
-http://www.ci.uchicago.edu/~aespinosa/Cybershake
+test/dummy_cache
     [ ] jbsim3d
     eos
     assert_equal(response, app_avail(pacman_cache))
