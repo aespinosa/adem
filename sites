@@ -1,0 +1,204 @@
+--- 
+WQCG-Harvard-OSG: 
+  compute_element: tuscany.med.harvard.edu:2119/jobmanager-condor
+  storage_element: gsiftp://tuscany.med.harvard.edu:2811
+  data_directory: /osg/storage/data
+  app_directory: /osg/storage/app
+FNAL_FERMIGRID: 
+  compute_element: 
+  - d0cabosg1.fnal.gov:2119/jobmanager-pbs
+  - d0cabosg2.fnal.gov:2119/jobmanager-pbs
+  - fermigridosg1.fnal.gov:2119/jobmanager-condor
+  storage_element: 
+  - gsiftp://d0cabosg1.fnal.gov:2811
+  - gsiftp://d0cabosg2.fnal.gov:2811
+  - gsiftp://fermigridosg1.fnal.gov:2811
+  data_directory: /grid/data
+  app_directory: /grid/app
+NYSGRID-CCR-U2: 
+  compute_element: u2-grid.ccr.buffalo.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://u2-grid.ccr.buffalo.edu:2811
+  data_directory: /san/scratch/grid/grid-tmp/grid-data
+  app_directory: /san/scratch/grid/grid-tmp/grid-apps
+USCMS-FNAL-WC1: 
+  compute_element: cmsosgce3.fnal.gov:2119/jobmanager-condor
+  storage_element: gsiftp://cmsosgce3.fnal.gov:2811
+  data_directory: /uscms_grid/data
+  app_directory: /uscms_grid/osg/app
+GLOW: 
+  compute_element: cmsgrid01.hep.wisc.edu:2119/jobmanager-condor
+  storage_element: gsiftp://cmsgrid01.hep.wisc.edu:2811
+  data_directory: /afs/hep.wisc.edu/osg/data
+  app_directory: /afs/hep.wisc.edu/osg/app
+RENCI-Engagement: 
+  compute_element: belhaven-1.renci.org:2119/jobmanager-condor
+  storage_element: gsiftp://belhaven-1.renci.org:2811
+  data_directory: /nfs/osg-data
+  app_directory: /nfs/osg-app
+Duke: 
+  compute_element: arcade.csem.duke.edu:2119/jobmanager-condor
+  storage_element: gsiftp://arcade.csem.duke.edu:2811
+  data_directory: /storage/bdgrid/osg/data
+  app_directory: /storage/bdgrid/osg/app
+UCR-HEP: 
+  compute_element: top.ucr.edu:2119/jobmanager-condor
+  storage_element: gsiftp://top.ucr.edu:2811
+  data_directory: /data/strange/osg_data
+  app_directory: /data/bottom/osg_app
+SBGrid-Harvard-East: 
+  compute_element: osg-east.hms.harvard.edu:2119/jobmanager-condor
+  storage_element: gsiftp://osg-east.hms.harvard.edu:2811
+  data_directory: /osg/storage/data
+  app_directory: /osg/storage/app
+UConn-OSG: 
+  compute_element: gluskap.phys.uconn.edu:2119/jobmanager-condor
+  storage_element: gsiftp://gluskap.phys.uconn.edu:2811
+  data_directory: /nfs/direct/annex/osg-data
+  app_directory: /nfs/direct/app
+NWICG_NotreDame: 
+  compute_element: osg.crc.nd.edu:2119/jobmanager-sge
+  storage_element: gsiftp://osg.crc.nd.edu:2811
+  data_directory: /dscratch/osg/data
+  app_directory: /dscratch/osg/app
+Purdue-Steele: 
+  compute_element: lepton.rcac.purdue.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://lepton.rcac.purdue.edu:2811
+  data_directory: /scratch/osg
+  app_directory: /apps/osg
+UFlorida-HPC: 
+  compute_element: iogw1.hpc.ufl.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://iogw1.hpc.ufl.edu:2811
+  data_directory: /scratch/ufhpc/osg/data
+  app_directory: /scratch/ufhpc/osg/app
+UTA_SWT2: 
+  compute_element: gk04.swt2.uta.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://gk04.swt2.uta.edu:2811
+  data_directory: /cluster/grid/data
+  app_directory: /cluster/grid/app
+SWT2_CPB: 
+  compute_element: gk01.atlas-swt2.org:2119/jobmanager-pbs
+  storage_element: gsiftp://gk01.atlas-swt2.org:2811
+  data_directory: /cluster/grid/data
+  app_directory: /cluster/grid/app
+FNAL_GPGRID_1: 
+  compute_element: fnpcosg1.fnal.gov:2119/jobmanager-condor
+  storage_element: gsiftp://fnpcosg1.fnal.gov:2811
+  data_directory: /grid/data
+  app_directory: /grid/app
+MIT_CMS: 
+  compute_element: ce01.cmsaf.mit.edu:2119/jobmanager-condor
+  storage_element: gsiftp://ce01.cmsaf.mit.edu:2811
+  data_directory: /osg/data
+  app_directory: /osg/app
+Purdue-RCAC: 
+  compute_element: osg.rcac.purdue.edu:2119/jobmanager-condor
+  storage_element: gsiftp://osg.rcac.purdue.edu:2811
+  data_directory: /scratch/osg
+  app_directory: /apps/osg
+CIT_CMS_T2: 
+  compute_element: 
+  - cit-gatekeeper.ultralight.org:2119/jobmanager-condor
+  - cit-gatekeeper2.ultralight.org:2119/jobmanager-condor
+  storage_element: 
+  - gsiftp://cit-gatekeeper.ultralight.org:2811
+  - gsiftp://cit-gatekeeper2.ultralight.org:2811
+  data_directory: /raid2/osg-data
+  app_directory: /raid1/osg-app
+UmissHEP: 
+  compute_element: umiss001.hep.olemiss.edu:2119/jobmanager-condor
+  storage_element: gsiftp://umiss001.hep.olemiss.edu:2811
+  data_directory: /osgremote/osg_data
+  app_directory: /osgremote/osg_app
+UFlorida-PG: 
+  compute_element: pg.ihepa.ufl.edu:2119/jobmanager-condor
+  storage_element: gsiftp://pg.ihepa.ufl.edu:2811
+  data_directory: /lustre/pg/data
+  app_directory: /raid/osgpg/pg/app
+NYSGRID_CORNELL_NYS1: 
+  compute_element: nys1.cac.cornell.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://nys1.cac.cornell.edu:2811
+  data_directory: /grid-tmp/grid-data
+  app_directory: /grid-tmp/grid-apps
+SMU_PHY: 
+  compute_element: smufarm.physics.smu.edu:2119/jobmanager-condor
+  storage_element: gsiftp://smufarm.physics.smu.edu:2811
+  data_directory: /data
+  app_directory: /app
+LIGO_UWM_NEMO: 
+  compute_element: osg-nemo-ce.phys.uwm.edu:2119/jobmanager-condor
+  storage_element: gsiftp://osg-nemo-ce.phys.uwm.edu:2811
+  data_directory: /opt/osg/data
+  app_directory: /opt/osg/app
+IU_OSG: 
+  compute_element: m3.quarry.teragrid.iu.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://m3.quarry.teragrid.iu.edu:2811
+  data_directory: /N/dcwan/scratch/osg/scratch/osg_data
+  app_directory: /N/osgapp
+Prairiefire: 
+  compute_element: pf-grid.unl.edu:2119/jobmanager-condor
+  storage_element: gsiftp://pf-grid.unl.edu:2811
+  data_directory: /opt/pfgriddata
+  app_directory: /opt/pfgridapp
+Clemson-ciTeam: 
+  compute_element: osgce.cs.clemson.edu:2119/jobmanager-condor
+  storage_element: gsiftp://osgce.cs.clemson.edu:2811
+  data_directory: /export/osg/data
+  app_directory: /export/osg/app
+Clemson-Palmetto: 
+  compute_element: osg-gw.clemson.edu:2119/jobmanager-condor
+  storage_element: gsiftp://osg-gw.clemson.edu:2811
+  data_directory: /projsmall/osg/data
+  app_directory: /projsmall/osg/app
+Nebraska: 
+  compute_element: 
+  - gpn-husker.unl.edu:2119/jobmanager-condor
+  - red.unl.edu:2119/jobmanager-condor
+  storage_element: 
+  - gsiftp://gpn-husker.unl.edu:2811
+  - gsiftp://red.unl.edu:2811
+  data_directory: /opt/osg/data
+  app_directory: /opt/osg/app
+UCHC_CBG: 
+  compute_element: vdgateway.vcell.uchc.edu:2119/jobmanager-pbs
+  storage_element: gsiftp://vdgateway.vcell.uchc.edu:2811
+  data_directory: /osg/data
+  app_directory: /osg/app
+UCSDT2: 
+  compute_element: 
+  - osg-gw-2.t2.ucsd.edu:2119/jobmanager-condor
+  - osg-gw-4.t2.ucsd.edu:2119/jobmanager-condor
+  storage_element: 
+  - gsiftp://osg-gw-2.t2.ucsd.edu:2811
+  - gsiftp://osg-gw-4.t2.ucsd.edu:2811
+  data_directory: /osgfs/data
+  app_directory: /code/osgcode
+Firefly: 
+  compute_element: 
+  - ff-grid.unl.edu:2119/jobmanager-pbs
+  - ff-grid2.unl.edu:2119/jobmanager-pbs
+  - ff-grid3.unl.edu:2119/jobmanager-pbs
+  storage_element: 
+  - gsiftp://ff-grid.unl.edu:2811
+  - gsiftp://ff-grid2.unl.edu:2811
+  - gsiftp://ff-grid3.unl.edu:2811
+  data_directory: /panfs/panasas/CMS/data
+  app_directory: /panfs/panasas/CMS/app
+Clemson-Birdnest: 
+  compute_element: birdnest.cs.clemson.edu:2119/jobmanager-condor
+  storage_element: gsiftp://birdnest.cs.clemson.edu:2811
+  data_directory: /export/osg/data
+  app_directory: /export/osg/app
+BNL-ATLAS: 
+  compute_element: 
+  - gridgk01.racf.bnl.gov:2119/jobmanager-condor
+  - gridgk02.racf.bnl.gov:2119/jobmanager-condor
+  storage_element: 
+  - gsiftp://gridgk01.racf.bnl.gov:2811
+  - gsiftp://gridgk02.racf.bnl.gov:2811
+  data_directory: /usatlas/prodjob/share/
+  app_directory: /usatlas/OSG/
+TTU-ANTAEUS: 
+  compute_element: antaeus.hpcc.ttu.edu:2119/jobmanager-sge
+  storage_element: gsiftp://antaeus.hpcc.ttu.edu:2811
+  data_directory: /lustre/hep/osg
+  app_directory: /lustre/home/antaeus/apps
