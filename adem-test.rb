@@ -30,9 +30,9 @@ class OnlineTest < Test::Unit::TestCase
     end
   end
 
-  def test_query_ress
+  def test_ress_query
     conf = @conf
-    ress = query_ress(conf).split "\n\n"
+    ress = ress_query(conf).split "\n\n"
     assumption = true
     class_ads = [
       "GlueSiteUniqueID", "GlueCEInfoHostName", "GlueCEInfoJobManager",
@@ -99,9 +99,9 @@ class OfflineTest < Test::Unit::TestCase
     assert_equal "ff-grid.unl.edu:2119/jobmanager-fork", site_fork("ff-grid.unl.edu:2119/jobmanager-pbs")
   end
 
-  def test_parse_classads
+  def test_ress_parse
     site_list = YAML.load @site_list
-    assert_equal site_list, parse_classads(@ress.split("\n\n"))
+    assert_equal site_list, ress_parse(@ress.split("\n\n"))
   end
 
   def test_app

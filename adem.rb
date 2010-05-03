@@ -31,13 +31,13 @@ def load_config(yaml_config)
   conf
 end
 
-def query_ress(conf)
+def ress_query(conf)
   `condor_status -pool #{conf[:ress_server]} -const \
     'stringListIMember(\"VO:#{conf[:virtual_organization]}\", \  
     GlueCEAccessControlBaseRule)' -long`
 end
 
-def parse_classads(ress)
+def ress_parse(ress)
   class_ads = [
     "GlueSiteUniqueID", "GlueCEInfoHostName", "GlueCEInfoJobManager",
     "GlueCEInfoGatekeeperPort", "GlueSEAccessProtocolEndpoint",
@@ -99,7 +99,7 @@ def sites(args, conf, sites_file)
   begin
     YAML.load File.open sites_file
   rescue Errno::ENOENT
-    result = parse_classads query_ress(conf).split("\n\n")
+    result = ress_parse ress_query(conf).split("\n\n")
     raise SiteError.new(result)
   end
 end
