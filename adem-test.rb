@@ -75,6 +75,27 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
       )
     )
   end
+
+  def test_pacman_install_firefly_jbsim3d
+    # Cleanup target first
+    `globus-job-run ff-grid.unl.edu -env PACMAN_LOCATION=/opt/pacman/pacman-3.28 -d /panfs/panasas/CMS/app/engage /opt/pacman/pacman-3.28/bin/pacman -remove jbsim3d`
+    expected = <<-eos
+  jbsim3d found in http://www.ci.uchicago.edu/~aespinosa/Cybershake...
+  Installing jbsim3d...
+  Downloading jbsim3d_r794~RHEL5_amd64.tar.gz...
+  Untarring jbsim3d_r794~RHEL5_amd64.tar.gz...
+  jbsim3d has been installed.
+    eos
+    assert_equal(
+      expected,
+      pacman_install(
+        "http://www.ci.uchicago.edu/~aespinosa/Cybershake:jbsim3d",
+        { :contact => "ff-grid.unl.edu/jobmanager-fork",
+          :pacman  => "/opt/pacman/pacman-3.28",
+          :path    => "/panfs/panasas/CMS/app/engage" }
+      )
+    )
+  end
 end
 
 class OfflineTest < Test::Unit::TestCase
