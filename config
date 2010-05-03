@@ -1,4 +1,4 @@
 ---
 ress_server: osg-ress-1.fnal.gov
-pacman_cache: http://www.ci.uchicago.edu/~aespinosa/pacman
+pacman_cache: http://www.ci.uchicago.edu/~aespinosa/Cybershake
 virtual_organization: engage
