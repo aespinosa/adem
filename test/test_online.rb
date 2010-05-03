@@ -78,4 +78,21 @@ test/dummy_cache
       )
     )
   end
+
+  def test_pacman_remove_firefly_jbsim3d
+    expected = <<-eos
+  Uninstalling jbsim3d...
+  Removing /panfs/panasas/CMS/app/engage/jbsim3d_r794~RHEL5_amd64.tar.gz contents...
+  jbsim3d has been uninstalled.
+    eos
+    assert_equal(
+      expected,
+      pacman_remove(
+        "jbsim3d",
+        { :contact => "ff-grid.unl.edu/jobmanager-fork",
+          :pacman  => "/opt/pacman/pacman-3.28",
+          :path    => "/panfs/panasas/CMS/app/engage" }
+      )
+    )
+  end
 end

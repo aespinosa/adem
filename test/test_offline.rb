@@ -35,4 +35,15 @@ class OfflineTest < Test::Unit::TestCase
   def test_config
     assert_equal(@conf, config(nil, "config"))
   end
+
+  def test_app_avail
+    pacman_cache = "test/dummy_cache"
+    response = <<-eos
+test/dummy_cache
+    [ ] jbsim3d
+    eos
+    assert_equal(response, app_avail(pacman_cache))
+  end
+
+
 end
