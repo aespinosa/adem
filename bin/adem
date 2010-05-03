@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'adem'
+
+if $0 == __FILE__
+  run_command ARGV, CONFIGURATION_FILE, SITES_FILE
+end

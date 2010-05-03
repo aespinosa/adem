@@ -1,10 +1,3 @@
-#!/usr/bin/env ruby
-
-# = ADEM: Application software DEployment and Management
-# Author::       Zhengxiong Hou (original sh prototype)
-# Author:: Allan Espinosa (rewrite to ruby)
-#
-
 require 'yaml'
 require 'ftools'
 
@@ -176,8 +169,4 @@ def run_command(args, config_file, sites_file)
   end
   return conf if command == "sites"
   app(args, conf) if command == "app"
-end
-
-if $0 == __FILE__
-  run_command ARGV, CONFIGURATION_FILE, SITES_FILE
 end
