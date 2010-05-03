@@ -7,6 +7,9 @@ class OfflineTest < Test::Unit::TestCase
     conf = @conf
     conf[:ress_server] = nil
     site_list = YAML.load @site_list
+    def ress_query(x)
+      ""
+    end
     assert_raise SiteError do
       sites(nil, conf, "non_existent_file")
     end
