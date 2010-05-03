@@ -124,6 +124,7 @@ class RunTest < Test::Unit::TestCase
   def test_sites_from_file
     conf = @conf
     site_list = YAML.load @site_list
-    assert_equal(site_list, run_command(["sites"], "config", "sites"))
+    conf[:sites] = site_list
+    assert_equal(conf, run_command(["sites"], "config", "sites"))
   end
 end

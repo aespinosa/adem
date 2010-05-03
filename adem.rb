@@ -143,22 +143,20 @@ end
 def run_command(args, config_file, sites_file)
   command = args.shift
   output = nil
-  if command == "sites"
-    conf = load_config File.open(config_file)
-    begin
-      output = sites(args, conf, sites_file) if command == "sites"
-    rescue SiteError => exception
-      output = exception.output
-      File.open(sites_file, "w") do |sites_file|
-        sites_file << output.to_yaml
-      end
+  conf = load_config File.open(config_file)
+  return conf if command == "config"
+  begin
+    site_args = nil
+    site_args = args if command == "sites"
+    conf[:sites] = sites(site_args, conf, sites_file)
+  rescue SiteError => exception
+    conf[:sites] = exception.output
+    File.open(sites_file, "w") do |sites_file|
+      sites_file << output.to_yaml
     end
-  elsif command == "app"
-    conf[:sites] = sites(nil, conf, sites_file)
-    app(args, conf)
-  else
-    output = config args, config_file
   end
+  return conf if command == "sites"
+  app(args, conf)
 end
 
 if $0 == __FILE__
