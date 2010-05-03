@@ -64,7 +64,8 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
     # Firefly
     site = {
       :compute_element => "ff-grid.unl.edu:2119/jobmanager-pbs",
-      :app_directory => "/panfs/panasas/CMS/app"
+      :app_directory => "/panfs/panasas/CMS/app",
+      :storage_element => "gsiftp://ff-gridftp.unl.edu:2811"
     }
     assert_equal("/opt/pacman/pacman-3.28", pacman_find(site, @conf))
   end
