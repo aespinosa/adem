@@ -32,10 +32,6 @@ class OfflineTest < Test::Unit::TestCase
     assert_equal("app", app(nil, conf))
   end
 
-  def test_config
-    assert_equal(@conf, config(nil, "config"))
-  end
-
   def test_app_avail
     pacman_cache = "test/dummy_cache"
     response = <<-eos
@@ -45,5 +41,26 @@ test/dummy_cache
     assert_equal(response, app_avail(pacman_cache))
   end
 
+  def test_config
+    assert_equal(@conf, config(nil, "test/dummy_config"))
+  end
 
+  def test_config_load
+    assert_equal(@conf, config_load(File.open("test/dummy_config").read))
+  end
+
+  def test_config_check
+    exception = assert_raise ConfigError do
+      config_check({})
+    end
+    assert_match /RESS server/, exception.message
+    exception = assert_raise ConfigError do
+      config_check({:ress_server => "foo"})
+    end
+    assert_match /Pacman cache/, exception.message
+    exception = assert_raise ConfigError do
+      config_check({:ress_server => "foo", :pacman_cache => "bar"})
+    end
+    assert_match /Virtual organization/, exception.message
+  end
 end

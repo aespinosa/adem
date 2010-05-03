@@ -1,3 +1,4 @@
+require 'optparse'
 require 'yaml'
 require 'ftools'
 
@@ -12,7 +13,7 @@ APPS_FILE          = "#{ENV['HOME']}/.adem/apps"
 def run_command(args, config_file, sites_file)
   command = args.shift
   output = nil
-  conf = load_config File.open(config_file)
+  conf = config args, config_file
   return conf if command == "config"
   begin
     site_args = nil
