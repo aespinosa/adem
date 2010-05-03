@@ -6,6 +6,7 @@
 #
 
 require 'yaml'
+require 'ftools'
 
 CONFIGURATION_FILE = "#{ENV['HOME']}/.adem/config"
 SITES_FILE         = "#{ENV['HOME']}/.adem/sites"
@@ -110,6 +111,35 @@ end
 def app_avail(pacman_cache)
   `pacman -trust-all-caches -lc #{pacman_cache}`
 end
+
+def app_deploy(app, site, conf)
+  sites.each do |site|
+    root = site[:pacman] || pacman_find(site, conf)
+    site[:pacman] = root
+    pacman_install site, root, conf
+  end
+end
+
+def site_fork(compute_element)
+  compute_element.gsub /jobmanager-.*$/, "jobmanager-fork"
+end
+
+def pacman_find(site, conf)
+  contact = site_fork site[:compute_element]
+  rootdir = site[:app_directory] + "/" + conf[:virtual_organization] 
+  script = <<-eos
+#!/bin/bash
+which pacman
+  eos
+  File.open("/tmp/find_pacman.sh", "w") do |dump|
+    dump << script
+  end
+  `globus-job-run #{contact} /bin/mkdir -p #{rootdir}`
+  `globus-job-run #{contact} -d #{rootdir} -stdin -s /tmp/find_pacman.sh /bin/bash -c 'cat > find_pacman.sh'`
+  `globus-job-run #{contact} -d #{rootdir} /bin/chmod 755 find_pacman.sh`
+  File.dirname(File.dirname(`globus-job-run #{contact} -d #{rootdir} find_pacman.sh`))
+end
+
 def config(args, config_file)
   load_config File.open(config_file)
 end

@@ -59,6 +59,15 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
     eos
     assert_equal(response, app_avail(pacman_cache))
   end
+
+  def test_pacman_find_firefly
+    # Firefly
+    site = {
+      :compute_element => "ff-grid.unl.edu:2119/jobmanager-pbs",
+      :app_directory => "/panfs/panasas/CMS/app"
+    }
+    assert_equal("/opt/pacman/pacman-3.28", pacman_find(site, @conf))
+  end
 end
 
 class OfflineTest < Test::Unit::TestCase
@@ -77,6 +86,10 @@ class OfflineTest < Test::Unit::TestCase
     conf = @conf
     site_list = YAML.load @site_list
     assert_equal(site_list, sites(nil, conf, "sites"))
+  end
+
+  def test_site_fork
+    assert_equal "ff-grid.unl.edu:2119/jobmanager-fork", site_fork("ff-grid.unl.edu:2119/jobmanager-pbs")
   end
 
   def test_parse_classads
