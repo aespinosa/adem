@@ -8,7 +8,7 @@ module Adem
   module TestSetup
     def setup
       @conf = {
-        :pacman_cache         => "http://www.ci.uchicago.edu/~aespinosa/pacman",
+        :pacman_cache         => "http://www.ci.uchicago.edu/~aespinosa/Cybershake",
         :ress_server          => "osg-ress-1.fnal.gov",
         :virtual_organization => "engage"
       }
@@ -49,6 +49,15 @@ class OnlineTest < Test::Unit::TestCase
     # False: there exist an entry without the expected classad.
     # Must report to osg support then
     assert assumption, "Missing attributes: \n\t#{missing.uniq.join(", ")}"
+  end
+
+  def test_app_avail
+    pacman_cache = @conf[:pacman_cache]
+    response = <<-eos
+http://www.ci.uchicago.edu/~aespinosa/Cybershake
+    [ ] jbsim3d
+    eos
+    assert_equal(response, app_avail(pacman_cache))
   end
 end
 

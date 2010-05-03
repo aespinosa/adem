@@ -107,6 +107,9 @@ def app(args, conf)
   "app"
 end
 
+def app_avail(pacman_cache)
+  `pacman -trust-all-caches -lc #{pacman_cache}`
+end
 def config(args, config_file)
   load_config File.open(config_file)
 end
