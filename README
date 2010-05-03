@@ -1,30 +1,25 @@
-adem-osg 
+= ADEM: Application software DEployment and Management
 
-Version 1.0
+Author:: Zhengxiong Hou, Allan Espinosa
+Maintainer:: Allan Espinosa (aespinosa AT cs DOT uchicago DOT edu)
 
-This ADEM tool is for Application software automatic DEployment and Management based on an OSG software binary or source code repository. You can also build and maintain your own application software repository. There are also examples of Application Execution by Swift.
+== Description
 
-1. scripts
-==========
-setup.sh   source this script to set-up the user env for Bash
-setup.csh  source this script to set-up the user env for Csh
+This ADEM tool is for Application software automatic DEployment and Management
+based on an OSG software binary or source code repository. You can also build
+and maintain your own application software repository. There are also examples
+of Application Execution by Swift.
 
-2. directories
-==============
-bin/
-   There are some scripts commands for automatically getting available grid sites, automatically deploy given application software to the set of grid sites, automatically check the results; automatically remove  or update a given application software; and get the sites.xml, tc.data files for Swift.
+== Usage
+  adem command [options]
 
-doc/
-   The documents about how to use this tool, and pacman-3.21.tar.gz for possible usage
+  Examples:
+    adem config --display
+    adem sites --update
+    adem app --avail
 
-log/
-   The records for the grid sites, applications, deployment and management results, and all of the commands.
-
-swift-execution-example/
-    Some examples for application execution by Swift
-
-test-sites
-    Some grid sites for test
-
-tmp/
-   Temperory directory for the output files
+  Further help:
+    adem config -h/--help        Configure ADEM
+    adem sites -h/--help         Manipulate the site list
+    adem app -h/--help           Application installation
+    adem help                    This help message
