@@ -1,13 +1,25 @@
 #!/usr/bin/env ruby
 
 # = ADEM: Application software DEployment and Management
-# authors:: Zhengxiong Hou (original sh prototype)
-#           Allan Espinosa (rewrite to ruby)
+# Author::       Zhengxiong Hou (original sh prototype)
+# Author:: Allan Espinosa (rewrite to ruby)
+#
 
 require 'yaml'
 
 CONFIGURATION_FILE = "#{ENV['HOME']}/.adem/config"
-SITES_FILE = "#{ENV['HOME']}/.adem/sites"
+SITES_FILE         = "#{ENV['HOME']}/.adem/sites"
+APPS_FILE          = "#{ENV['HOME']}/.adem/apps"
+
+class SiteError < Exception
+  attr_reader :output
+  def initialize(output)
+    @output = output
+  end
+end
+
+class ConfigError < RuntimeError
+end
 
 def load_config(yaml_config)
   conf = YAML.load yaml_config
@@ -65,6 +77,7 @@ def parse_classads(ress)
     site[site_name]["data_directory"] = tmp['GlueCEInfoDataDir']
     site[site_name]["app_directory"] = tmp['GlueCEInfoApplicationDir']
 
+    # Disabled because some storage endpoints are broken
     #storage_element = tmp['GlueSEAccessProtocolEndpoint'] if tmp['GlueSEAccessProtocolType'] == 'gsiftp'
     #next if storage_element == nil
     #if storage_element.include? ','
@@ -85,7 +98,8 @@ def sites(args, conf, sites_file)
   begin
     YAML.load File.open sites_file
   rescue Errno::ENOENT
-    parse_classads query_ress(conf).split("\n\n")
+    result = parse_classads query_ress(conf).split("\n\n")
+    raise SiteError.new(result)
   end
 end
 

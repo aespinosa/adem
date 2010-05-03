@@ -13,7 +13,6 @@ module Adem
         :virtual_organization => "engage"
       }
       @site_list = File.open("sites").read
-      #@site_list.gsub! /^\s+/, ''
       @ress = File.open("dummy_ress").read
     end
   end
@@ -22,20 +21,13 @@ end
 class OnlineTest < Test::Unit::TestCase
   include Adem::TestSetup
 
-  def test_sites_exception
-    conf = @conf
-    conf[:ress_server] = nil
-    site_list = YAML.load @site_list
-    begin
-      sites(nil, conf, "non_existent_file")
-    rescue Errno::ENOENT
-      assert true, "Received exception"
-    end
-  end
-
   def test_sites_live
     conf = @conf
-    assert_equal(YAML.load(@site_list), sites(nil, conf, "non_existent_file"))
+    begin
+      sites(nil, conf, "non_existent_file")
+    rescue SiteError => e
+      assert_equal YAML.load(@site_list), e.output
+    end
   end
 
   def test_query_ress
@@ -63,18 +55,25 @@ end
 class OfflineTest < Test::Unit::TestCase
   include Adem::TestSetup
 
+  def test_sites_exception
+    conf = @conf
+    conf[:ress_server] = nil
+    site_list = YAML.load @site_list
+    assert_raise SiteError do
+      sites(nil, conf, "non_existent_file")
+    end
+  end
+
   def test_sites_from_file
     conf = @conf
     site_list = YAML.load @site_list
     assert_equal(site_list, sites(nil, conf, "sites"))
   end
 
-
   def test_parse_classads
     site_list = YAML.load @site_list
     assert_equal site_list, parse_classads(@ress.split("\n\n"))
   end
-
 
   def test_app
     conf = @conf
