@@ -10,11 +10,18 @@ CONFIGURATION_FILE = "#{ENV['HOME']}/.adem/config"
 SITES_FILE = "#{ENV['HOME']}/.adem/sites"
 
 def load_config(yaml_config)
-  YAML.load yaml_config
+  conf = YAML.load yaml_config
+  conf.each do |key, val|
+    conf.delete(key)
+    conf[key.to_sym] = val
+  end
+  conf
 end
 
 def query_ress(conf)
-  File.open("dummy_ress").read.split '\n\n'
+  `condor_status -pool #{conf[:ress_server]} -const \
+    'stringListIMember(\"VO:#{conf[:virtual_organization]}\", \  
+    GlueCEAccessControlBaseRule)' -long`
 end
 
 def parse_classads(ress)
@@ -78,7 +85,7 @@ def sites(args, conf, sites_file)
   begin
     YAML.load File.open sites_file
   rescue Errno::ENOENT
-    #parse_classads query_ress conf
+    parse_classads query_ress(conf).split("\n\n")
   end
 end
 
@@ -86,20 +93,20 @@ def app(args, conf)
   "app"
 end
 
-def config(args)
-  load_config File.open("config")
+def config(args, config_file)
+  load_config File.open(config_file)
 end
 
 def run_command(args)
   command = args.shift
   if command != "config"
-    conf = load_configuration File.open(CONFIGURATION_FILE)
-    sites args, conf, File.open(SITES_FILE).read
+    conf = load_config File.open(CONFIGURATION_FILE)
+    puts sites(args, conf, SITES_FILE).to_yaml if command == "sites"
   else
-    config args
+    config args, CONFIGURATION_FILE
   end
 end
 
 if $0 == __FILE__
-  run_command ARGV, conf
+  run_command ARGV
 end
