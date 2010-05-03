@@ -1,22 +1,4 @@
-#!/usb/bin/env ruby
-
-require 'test/unit'
-require 'adem'
-require 'yaml'
-
-module Adem
-  module TestSetup
-    def setup
-      @conf = {
-        :pacman_cache         => "http://www.ci.uchicago.edu/~aespinosa/Cybershake",
-        :ress_server          => "osg-ress-1.fnal.gov",
-        :virtual_organization => "engage"
-      }
-      @site_list = File.open("sites").read
-      @ress = File.open("dummy_ress").read
-    end
-  end
-end
+require 'setup_test'
 
 class OnlineTest < Test::Unit::TestCase
   include Adem::TestSetup
@@ -95,57 +77,5 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
           :path    => "/panfs/panasas/CMS/app/engage" }
       )
     )
-  end
-end
-
-class OfflineTest < Test::Unit::TestCase
-  include Adem::TestSetup
-
-  def test_sites_exception
-    conf = @conf
-    conf[:ress_server] = nil
-    site_list = YAML.load @site_list
-    assert_raise SiteError do
-      sites(nil, conf, "non_existent_file")
-    end
-  end
-
-  def test_sites_from_file
-    conf = @conf
-    site_list = YAML.load @site_list
-    assert_equal(site_list, sites(nil, conf, "sites"))
-  end
-
-  def test_site_fork
-    assert_equal "ff-grid.unl.edu:2119/jobmanager-fork", site_fork("ff-grid.unl.edu:2119/jobmanager-pbs")
-  end
-
-  def test_ress_parse
-    site_list = YAML.load @site_list
-    assert_equal site_list, ress_parse(@ress.split("\n\n"))
-  end
-
-  def test_app
-    conf = @conf
-    assert_equal("app", app(nil, conf))
-  end
-
-  def test_config
-    assert_equal(@conf, config(nil, "config"))
-  end
-end
-
-class RunTest < Test::Unit::TestCase
-  include Adem::TestSetup
-
-  def test_config
-    assert_equal(@conf, run_command(["config"], "config", nil))
-  end
-
-  def test_sites_from_file
-    conf = @conf
-    site_list = YAML.load @site_list
-    conf[:sites] = site_list
-    assert_equal(conf, run_command(["sites"], "config", "sites"))
   end
 end

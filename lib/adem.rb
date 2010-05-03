@@ -175,7 +175,7 @@ def run_command(args, config_file, sites_file)
     end
   end
   return conf if command == "sites"
-  app(args, conf)
+  app(args, conf) if command == "app"
 end
 
 if $0 == __FILE__
