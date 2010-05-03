@@ -33,15 +33,6 @@ class OnlineTest < Test::Unit::TestCase
     assert assumption, "Missing attributes: \n\t#{missing.uniq.join(", ")}"
   end
 
-  def test_app_avail
-    pacman_cache = "test/dummy_cache"
-    response = <<-eos
-test/dummy_cache
-    [ ] jbsim3d
-    eos
-    assert_equal(response, app_avail(pacman_cache))
-  end
-
   def test_pacman_find_firefly
     # Firefly
     site = {
