@@ -69,7 +69,10 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
     }
     assert_equal(
       "/opt/pacman/pacman-3.28",
-      pacman_find(site, "/panfs/panasas/CMS/app/engage")
+      pacman_find(
+        "ff-grid.unl.edu/jobmanager-fork",
+        "/panfs/panasas/CMS/app/engage"
+      )
     )
   end
 end

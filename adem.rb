@@ -115,8 +115,9 @@ end
 def app_deploy(app, conf)
   conf[:sites].each do |site|
     path = "#{site[:app_directory]}/#{conf[:virtual_organization]}"
-    site[:pacman] = pacman_find(site, path) if not site[:pacman] 
-    pacman_install site, path
+    contact = site_fork site[:compute_element]
+    site[:pacman] = pacman_find(contact, path) if not site[:pacman] 
+    pacman_install contact, path
   end
 end
 
@@ -124,8 +125,7 @@ def site_fork(compute_element)
   compute_element.gsub /jobmanager-.*$/, "jobmanager-fork"
 end
 
-def pacman_find(site, rootdir)
-  contact = site_fork site[:compute_element]
+def pacman_find(contact, rootdir)
   File.open("find_pacman.sh", "w") do |dump|
     dump.puts "#!/bin/bash"
     dump.puts "which pacman"
