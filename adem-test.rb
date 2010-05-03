@@ -67,7 +67,10 @@ http://www.ci.uchicago.edu/~aespinosa/Cybershake
       :app_directory => "/panfs/panasas/CMS/app",
       :storage_element => "gsiftp://ff-gridftp.unl.edu:2811"
     }
-    assert_equal("/opt/pacman/pacman-3.28", pacman_find(site, @conf))
+    assert_equal(
+      "/opt/pacman/pacman-3.28",
+      pacman_find(site, "/panfs/panasas/CMS/app/engage")
+    )
   end
 end
 

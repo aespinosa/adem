@@ -112,11 +112,11 @@ def app_avail(pacman_cache)
   `pacman -trust-all-caches -lc #{pacman_cache}`
 end
 
-def app_deploy(app, site, conf)
-  sites.each do |site|
-    root = site[:pacman] || pacman_find(site, conf)
-    site[:pacman] = root
-    pacman_install site, root, conf
+def app_deploy(app, conf)
+  conf[:sites].each do |site|
+    path = "#{site[:app_directory]}/#{conf[:virtual_organization]}"
+    site[:pacman] = pacman_find(site, path) if not site[:pacman] 
+    pacman_install site, path
   end
 end
 
@@ -124,10 +124,8 @@ def site_fork(compute_element)
   compute_element.gsub /jobmanager-.*$/, "jobmanager-fork"
 end
 
-def pacman_find(site, conf)
+def pacman_find(site, rootdir)
   contact = site_fork site[:compute_element]
-  storage = site[:storage_element].first
-  rootdir = site[:app_directory] + "/" + conf[:virtual_organization] 
   File.open("find_pacman.sh", "w") do |dump|
     dump.puts "#!/bin/bash"
     dump.puts "which pacman"
