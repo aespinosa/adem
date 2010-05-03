@@ -111,16 +111,27 @@ def config(args, config_file)
   load_config File.open(config_file)
 end
 
-def run_command(args)
+def run_command(args, config_file, sites_file)
   command = args.shift
-  if command != "config"
-    conf = load_config File.open(CONFIGURATION_FILE)
-    puts sites(args, conf, SITES_FILE).to_yaml if command == "sites"
+  output = nil
+  if command == "sites"
+    conf = load_config File.open(config_file)
+    begin
+      output = sites(args, conf, sites_file) if command == "sites"
+    rescue SiteError => exception
+      output = exception.output
+      File.open(sites_file, "w") do |sites_file|
+        sites_file << output.to_yaml
+      end
+    end
+  elsif command == "app"
+    conf[:sites] = sites(nil, conf, sites_file)
+    app(args, conf)
   else
-    config args, CONFIGURATION_FILE
+    output = config args, config_file
   end
 end
 
 if $0 == __FILE__
-  run_command ARGV
+  run_command ARGV, CONFIGURATION_FILE, SITES_FILE
 end
