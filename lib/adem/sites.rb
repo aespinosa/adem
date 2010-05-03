@@ -77,5 +77,3 @@ def ress_parse(ress)
   end
   site
 end
-
-
