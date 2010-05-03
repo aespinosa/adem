@@ -1,8 +1,6 @@
-require 'optparse'
-
 def app(args, conf)
   options = {}
-  site_conf = nil
+  site_conf = conf[:sites]
   optparse = OptionParser.new do |opts|
     opts.banner = "Usage: adem app [options]"
 
@@ -27,6 +25,7 @@ def app(args, conf)
     end
   end
   optparse.parse!
+  site_conf
 end
 
 def app_avail(pacman_cache)

@@ -5,6 +5,7 @@ require 'ftools'
 require 'adem/config'
 require 'adem/sites'
 require 'adem/app'
+require 'adem/help'
 
 CONFIGURATION_FILE = "#{ENV['HOME']}/.adem/config"
 SITES_FILE         = "#{ENV['HOME']}/.adem/sites"
@@ -13,6 +14,7 @@ APPS_FILE          = "#{ENV['HOME']}/.adem/apps"
 def run_command(args, config_file, sites_file)
   command = args.shift
   output = nil
+  return help if command == "help"
   conf = config args, config_file
   return conf if command == "config"
   begin
