@@ -2,6 +2,7 @@ require 'optparse'
 
 def app(args, conf)
   options = {}
+  site_conf = nil
   optparse = OptionParser.new do |opts|
     opts.banner = "Usage: adem app [options]"
 
@@ -10,9 +11,14 @@ def app(args, conf)
       puts app_avail(conf[:pacman_cache]).grep /[(\ |\*)]/
     end
 
-    opts.on('-i', '--install PACKAGE', 'Package to install') do |package|
-      puts "Installing #{package}"
-      app_install package, conf
+    opts.on('-i', '--install PACKAGE', 'Install package') do |package|
+      puts "Installing #{package} on sites supporting the virtual organization #{conf[:virtual_organization]}"
+      site_conf = app_install package, conf
+    end
+
+    opts.on('-r', '--remove PACKAGE', 'Remove package') do |package|
+      puts "Removing #{package} on sites supporting the virtual organization #{conf[:virtual_organization]}"
+      site_conf = app_remove package, conf
     end
 
     opts.on_tail('-h', '--help', 'Show this help message') do
@@ -29,6 +35,7 @@ end
 
 def app_deploy(app, conf)
   conf[:sites].each do |site|
+    puts "Site #{site.key}"
     path = "#{site[:app_directory]}/#{conf[:virtual_organization]}"
     contact = site_fork site[:compute_element]
     site[:pacman] = pacman_find(contact, path) if not site[:pacman] 
@@ -40,6 +47,7 @@ def app_deploy(app, conf)
     package = "#{conf[:pacman_cache]}:#{app}"
     pacman_install package, target 
   end
+  conf[:sites]
 end
 
 def site_fork(compute_element)
