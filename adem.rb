@@ -31,6 +31,15 @@ def load_config(yaml_config)
   conf
 end
 
+def sites(args, conf, sites_file)
+  begin
+    YAML.load File.open sites_file
+  rescue Errno::ENOENT
+    result = ress_parse ress_query(conf).split("\n\n")
+    raise SiteError.new(result)
+  end
+end
+
 def ress_query(conf)
   `condor_status -pool #{conf[:ress_server]} -const \
     'stringListIMember(\"VO:#{conf[:virtual_organization]}\", \  
@@ -93,15 +102,6 @@ def ress_parse(ress)
     #end
   end
   site
-end
-
-def sites(args, conf, sites_file)
-  begin
-    YAML.load File.open sites_file
-  rescue Errno::ENOENT
-    result = ress_parse ress_query(conf).split("\n\n")
-    raise SiteError.new(result)
-  end
 end
 
 def app(args, conf)
